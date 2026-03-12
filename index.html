@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="corporate">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ── SEO ─────────────────────────────────────────────── -->
+  <title>TETRAform – Free Form Autofill Chrome Extension</title>
+  <meta name="description" content="Free form autofill Chrome extension. Fill job applications, scholarships, and web forms in one click. Multiple profiles. 100% private — your data never leaves your device." />
+  <meta name="keywords" content="form autofill, form filler, autofill chrome extension, auto fill forms, job application autofill, automatic form filler, chrome autofill extension" />
+  <link rel="canonical" href="https://tetraform.app/" />
+
+  <!-- ── Open Graph ───────────────────────────────────────── -->
+  <meta property="og:type"        content="website" />
+  <meta property="og:url"         content="https://tetraform.app/" />
+  <meta property="og:title"       content="TETRAform – Free Form Autofill Chrome Extension" />
+  <meta property="og:description" content="Fill job applications, scholarships, and web forms in one click. Multiple profiles. 100% private." />
+  <meta property="og:image"       content="https://tetraform.app/public/og-image.png" />
+
+  <!-- ── Twitter Card ─────────────────────────────────────── -->
+  <meta name="twitter:card"        content="summary_large_image" />
+  <meta name="twitter:title"       content="TETRAform – Free Form Autofill Chrome Extension" />
+  <meta name="twitter:description" content="Fill job applications, scholarships, and web forms in one click. Multiple profiles. 100% private." />
+  <meta name="twitter:image"       content="https://tetraform.app/public/og-image.png" />
+
+  <!-- ── Icons ────────────────────────────────────────────── -->
+  <link rel="icon"         type="image/png" sizes="128x128" href="public/icon128.png" />
+  <link rel="icon"         type="image/png" sizes="48x48"   href="public/icon48.png" />
+  <link rel="icon"         type="image/png" sizes="16x16"   href="public/icon16.png" />
+  <link rel="apple-touch-icon"                               href="public/icon128.png" />
+
+  <!-- ── Fonts ─────────────────────────────────────────────
+       Extension uses system-ui; Inter adds polish on larger screens.
+  ─────────────────────────────────────────────────────────── -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- ── DaisyUI v5 + Tailwind v3 CDN (no build step required) ──
+       DaisyUI provides component styles; Tailwind CDN generates utilities.
+       Corporate theme and brand gradient defined below in <style>.
+  ─────────────────────────────────────────────────────────────── -->
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@5/dist/full.min.css" rel="stylesheet" type="text/css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    body { font-family: 'Inter', system-ui, -apple-system, sans-serif; }
+
+    /* Corporate theme — DaisyUI v5 CSS variables */
+    [data-theme="corporate"] {
+      color-scheme: light;
+      --color-base-100: oklch(100% 0 0);
+      --color-base-200: oklch(93% 0 0);
+      --color-base-300: oklch(86% 0 0);
+      --color-base-content: oklch(22.389% 0.031 278.072);
+      --color-primary: oklch(58% 0.158 241.966);
+      --color-primary-content: oklch(100% 0 0);
+      --color-secondary: oklch(55% 0.046 257.417);
+      --color-secondary-content: oklch(100% 0 0);
+      --color-accent: oklch(60% 0.118 184.704);
+      --color-accent-content: oklch(100% 0 0);
+      --color-neutral: oklch(0% 0 0);
+      --color-neutral-content: oklch(100% 0 0);
+      --color-info: oklch(60% 0.126 221.723);
+      --color-info-content: oklch(100% 0 0);
+      --color-success: oklch(62% 0.194 149.214);
+      --color-success-content: oklch(100% 0 0);
+      --color-warning: oklch(85% 0.199 91.936);
+      --color-warning-content: oklch(0% 0 0);
+      --color-error: oklch(70% 0.191 22.216);
+      --color-error-content: oklch(0% 0 0);
+      --radius-selector: 0.25rem;
+      --radius-field: 0.25rem;
+      --radius-box: 0.25rem;
+      --size-selector: 0.25rem;
+      --size-field: 0.25rem;
+      --border: 1px;
+      --depth: 0;
+      --noise: 0;
+    }
+
+    /* Brand gradient — identical to HeaderBar.tsx in the extension */
+    .brand-gradient {
+      background-image: linear-gradient(to right, #06b6d4, #2563eb);
+      background-color: #06b6d4;
+    }
+
+    /* Slide-up animation */
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .animate-slide-up { animation: slideUp 0.4s ease-out; }
+  </style>
+
+  <!-- ── Structured Data ──────────────────────────────────── -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Form Autofill & Filler - TETRAform",
+    "applicationCategory": "BrowserApplication",
+    "operatingSystem": "Chrome",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "description": "Free form autofill Chrome extension. Fill job applications, scholarships, and web forms in one click. Multiple profiles. 100% private.",
+    "url": "https://tetraform.app",
+    "downloadUrl": "https://chromewebstore.google.com/detail/tetraform-smart-form-auto/acgapenhjikhpeicknacehlkalpemigb"
+  }
+  </script>
+</head>
+
+<body class="antialiased bg-base-100 text-base-content">
+
+  <!-- ════════════════════════════════════════════════════════
+       NAV — white, corporate style
+  ═══════════════════════════════════════════════════════════ -->
+  <div class="navbar sticky top-0 z-50 bg-base-100/90 backdrop-blur-md border-b border-base-300 px-4 md:px-8">
+    <div class="flex-1">
+      <a href="/" class="flex items-center gap-2.5 font-bold text-lg hover:opacity-80 transition-opacity">
+        <img src="public/icon48.png" alt="TETRAform logo" class="w-7 h-7 rounded" />
+        <span>TETRAform</span>
+      </a>
+    </div>
+    <div class="flex-none gap-2">
+      <a href="#how-it-works" class="btn btn-ghost btn-sm hidden sm:flex">How it works</a>
+      <a href="#faq"          class="btn btn-ghost btn-sm hidden sm:flex">FAQ</a>
+      <a href="https://chromewebstore.google.com/detail/tetraform-smart-form-auto/acgapenhjikhpeicknacehlkalpemigb"
+         target="_blank" rel="noopener noreferrer"
+         class="btn btn-primary btn-sm gap-2">
+        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <circle cx="12" cy="12" r="4.5" fill="currentColor" opacity=".9"/>
+          <path d="M12 7.5h9.196A10 10 0 1 0 7.197 20.294L11.7 12.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <path d="M16.5 19.794A10 10 0 0 0 21.196 7.5H12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <path d="M7.197 20.294A10 10 0 0 0 16.5 19.793" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        Add to Chrome
+      </a>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════════════════════
+       HERO — brand gradient background, white text
+       Mirrors HeaderBar.tsx: linear-gradient(to right, #06b6d4, #2563eb)
+  ═══════════════════════════════════════════════════════════ -->
+  <section class="brand-gradient px-4 pt-24 pb-20 md:pt-32 md:pb-28 text-center relative overflow-hidden">
+    <div class="pointer-events-none absolute inset-0 bg-gradient-to-b from-white/10 to-transparent" aria-hidden="true"></div>
+
+    <div class="relative max-w-3xl mx-auto">
+      <!-- Eyebrow -->
+      <div class="mb-5">
+        <span class="badge bg-white/20 text-white border-white/30 text-xs font-semibold tracking-widest uppercase px-4 py-3">
+          Free Chrome Extension
+        </span>
+      </div>
+
+      <!-- Headline — all white, same as AppTitle.tsx on the extension header -->
+      <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold leading-tight tracking-tight mb-6 text-white">
+        Fill any web form<br />
+        <span class="text-white/90">in under 5 seconds</span>
+      </h1>
+
+      <!-- Sub-headline (front-loads keywords for SEO) -->
+      <p class="text-lg md:text-xl text-white/80 max-w-2xl mx-auto mb-10 leading-relaxed">
+        TETRAform is a free <strong class="text-white font-semibold">form autofill extension for Chrome</strong>.
+        Automatically fill job applications, scholarship forms, and web forms in one click.
+        Multiple profiles. 100% private — your data never leaves your device.
+      </p>
+
+      <!-- CTA row -->
+      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
+        <a href="https://chromewebstore.google.com/detail/tetraform-smart-form-auto/acgapenhjikhpeicknacehlkalpemigb"
+           target="_blank" rel="noopener noreferrer"
+           class="btn bg-white text-primary hover:bg-white/95 border-none btn-lg gap-3 shadow-xl px-8">
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <circle cx="12" cy="12" r="4.5" fill="currentColor" opacity=".9"/>
+            <path d="M12 7.5h9.196A10 10 0 1 0 7.197 20.294L11.7 12.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <path d="M16.5 19.794A10 10 0 0 0 21.196 7.5H12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <path d="M7.197 20.294A10 10 0 0 0 16.5 19.793" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          Add to Chrome — It's Free
+        </a>
+        <a href="#how-it-works" class="btn btn-ghost text-white/80 hover:text-white hover:bg-white/10 btn-lg gap-2">
+          See how it works
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+          </svg>
+        </a>
+      </div>
+
+      <!-- Trust micro-copy -->
+      <div class="flex flex-wrap gap-x-6 gap-y-2 justify-center text-sm text-white/60">
+        <span class="flex items-center gap-1.5">
+          <svg class="w-4 h-4 text-white/70" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+          </svg>
+          Free forever
+        </span>
+        <span class="flex items-center gap-1.5">
+          <svg class="w-4 h-4 text-white/70" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+          </svg>
+          No account required
+        </span>
+        <span class="flex items-center gap-1.5">
+          <svg class="w-4 h-4 text-white/70" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+          </svg>
+          Works on any website
+        </span>
+        <span class="flex items-center gap-1.5">
+          <svg class="w-4 h-4 text-white/70" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+          </svg>
+          Data stays on your device
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       SOCIAL PROOF — Works on
+  ═══════════════════════════════════════════════════════════ -->
+  <section class="border-b border-base-300 bg-base-200 py-8 px-4">
+    <div class="max-w-4xl mx-auto">
+      <p class="text-center text-xs font-semibold tracking-widest uppercase text-base-content/40 mb-5">
+        Works on your favourite job boards & form builders
+      </p>
+      <div class="flex flex-wrap justify-center gap-x-8 gap-y-3 opacity-50">
+        <span class="text-sm font-semibold tracking-wide">LinkedIn</span>
+        <span class="text-base-content/30">·</span>
+        <span class="text-sm font-semibold tracking-wide">Indeed</span>
+        <span class="text-base-content/30">·</span>
+        <span class="text-sm font-semibold tracking-wide">Greenhouse</span>
+        <span class="text-base-content/30">·</span>
+        <span class="text-sm font-semibold tracking-wide">Lever</span>
+        <span class="text-base-content/30">·</span>
+        <span class="text-sm font-semibold tracking-wide">Workday</span>
+        <span class="text-base-content/30">·</span>
+        <span class="text-sm font-semibold tracking-wide">Typeform</span>
+        <span class="text-base-content/30">·</span>
+        <span class="text-sm font-semibold tracking-wide">Google Forms</span>
+        <span class="text-base-content/30">·</span>
+        <span class="text-sm font-semibold tracking-wide">JotForm</span>
+        <span class="text-base-content/30">·</span>
+        <span class="text-sm font-semibold tracking-wide">And any website</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       HOW IT WORKS
+  ═══════════════════════════════════════════════════════════ -->
+  <section id="how-it-works" class="py-24 px-4 bg-base-100">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center mb-14">
+        <p class="text-xs font-semibold tracking-widest uppercase text-primary mb-3">How it works</p>
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">Three steps. Then never again.</h2>
+        <p class="text-base-content/60 text-lg max-w-xl mx-auto">
+          Set up once. Autofill any form, on any website, forever.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+        <div class="card bg-base-200 border border-base-300 hover:border-primary/40 transition-colors shadow-sm">
+          <div class="card-body gap-4">
+            <div class="w-11 h-11 rounded-full brand-gradient flex items-center justify-center text-white font-extrabold text-lg shrink-0">1</div>
+            <h3 class="card-title text-lg">Create a profile</h3>
+            <p class="text-base-content/60 text-sm leading-relaxed">
+              Add your name, email, phone, address, and any custom fields. Create one profile
+              for job applications, another for school — or link a profile to a specific website.
+            </p>
+          </div>
+        </div>
+
+        <div class="card bg-base-200 border border-base-300 hover:border-primary/40 transition-colors shadow-sm">
+          <div class="card-body gap-4">
+            <div class="w-11 h-11 rounded-full brand-gradient flex items-center justify-center text-white font-extrabold text-lg shrink-0">2</div>
+            <h3 class="card-title text-lg">Browse to any form</h3>
+            <p class="text-base-content/60 text-sm leading-relaxed">
+              TETRAform detects forms automatically. The assistant bar appears at the top of the
+              page — always visible when you need it, invisible when you don't.
+            </p>
+          </div>
+        </div>
+
+        <div class="card bg-base-200 border border-base-300 hover:border-primary/40 transition-colors shadow-sm">
+          <div class="card-body gap-4">
+            <div class="w-11 h-11 rounded-full brand-gradient flex items-center justify-center text-white font-extrabold text-lg shrink-0">3</div>
+            <h3 class="card-title text-lg">One click — done</h3>
+            <p class="text-base-content/60 text-sm leading-relaxed">
+              Click <strong>"Fill from profile"</strong> and watch every field fill in seconds.
+              Review and submit. <span class="text-primary font-semibold">⚡ 23 fields in 4 seconds.</span>
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="mt-6 text-center">
+        <span class="text-sm text-base-content/50">
+          Power user? Use
+          <kbd class="kbd kbd-sm">Ctrl</kbd> + <kbd class="kbd kbd-sm">Shift</kbd> + <kbd class="kbd kbd-sm">F</kbd>
+          to autofill without opening the popup.
+          <span class="hidden sm:inline">(<kbd class="kbd kbd-sm">⌘</kbd>+<kbd class="kbd kbd-sm">Shift</kbd>+<kbd class="kbd kbd-sm">F</kbd> on Mac)</span>
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       WHO IT'S FOR — Personas
+  ═══════════════════════════════════════════════════════════ -->
+  <section class="py-24 px-4 bg-base-200">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center mb-14">
+        <p class="text-xs font-semibold tracking-widest uppercase text-primary mb-3">Who it's for</p>
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">Built for people who fill a lot of forms</h2>
+        <p class="text-base-content/60 text-lg max-w-xl mx-auto">
+          If you value your time and fill the same fields over and over, TETRAform is for you.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+
+        <div class="card bg-base-100 border border-base-300 hover:border-primary/40 transition-all hover:-translate-y-0.5 shadow-sm">
+          <div class="card-body gap-3">
+            <div class="text-3xl" aria-hidden="true">🎯</div>
+            <h3 class="card-title">Job Seekers</h3>
+            <p class="text-base-content/60 text-sm">
+              The job hunt is a numbers game. Stop retyping your resume into every application
+              and focus on what matters — preparing for interviews.
+            </p>
+            <ul class="mt-2 space-y-1.5 text-sm text-base-content/60">
+              <li class="flex items-start gap-2"><span class="text-success font-bold shrink-0">✓</span> Fill LinkedIn, Indeed, Greenhouse in seconds</li>
+              <li class="flex items-start gap-2"><span class="text-success font-bold shrink-0">✓</span> Separate profiles for different job types</li>
+              <li class="flex items-start gap-2"><span class="text-success font-bold shrink-0">✓</span> Apply to 10× more jobs in the same time</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="card bg-base-100 border border-base-300 hover:border-primary/40 transition-all hover:-translate-y-0.5 shadow-sm">
+          <div class="card-body gap-3">
+            <div class="text-3xl" aria-hidden="true">🎓</div>
+            <h3 class="card-title">Students</h3>
+            <p class="text-base-content/60 text-sm">
+              Juggling internship, scholarship, and university applications? One profile
+              covers all your academic details, another for your resume.
+            </p>
+            <ul class="mt-2 space-y-1.5 text-sm text-base-content/60">
+              <li class="flex items-start gap-2"><span class="text-success font-bold shrink-0">✓</span> Fill scholarship and grant applications</li>
+              <li class="flex items-start gap-2"><span class="text-success font-bold shrink-0">✓</span> Works on any university portal</li>
+              <li class="flex items-start gap-2"><span class="text-success font-bold shrink-0">✓</span> Custom fields for essays and references</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="card bg-base-100 border border-base-300 hover:border-primary/40 transition-all hover:-translate-y-0.5 shadow-sm">
+          <div class="card-body gap-3">
+            <div class="text-3xl" aria-hidden="true">💼</div>
+            <h3 class="card-title">Freelancers & Consultants</h3>
+            <p class="text-base-content/60 text-sm">
+              Onboarding new clients means filling the same intake forms, NDAs, and project
+              documents over and over. TETRAform handles the data entry.
+            </p>
+            <ul class="mt-2 space-y-1.5 text-sm text-base-content/60">
+              <li class="flex items-start gap-2"><span class="text-success font-bold shrink-0">✓</span> Client intake forms in seconds</li>
+              <li class="flex items-start gap-2"><span class="text-success font-bold shrink-0">✓</span> Domain-linked profiles for recurring clients</li>
+              <li class="flex items-start gap-2"><span class="text-success font-bold shrink-0">✓</span> Custom fields for any data type</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="card bg-base-100 border border-base-300 hover:border-primary/40 transition-all hover:-translate-y-0.5 shadow-sm">
+          <div class="card-body gap-3">
+            <div class="text-3xl" aria-hidden="true">📊</div>
+            <h3 class="card-title">Sales & Business Reps</h3>
+            <p class="text-base-content/60 text-sm">
+              CRM data entry is eating your selling time. Autofill prospect forms, registration
+              pages, and client documents with one click.
+            </p>
+            <ul class="mt-2 space-y-1.5 text-sm text-base-content/60">
+              <li class="flex items-start gap-2"><span class="text-success font-bold shrink-0">✓</span> Fill CRM and prospect forms instantly</li>
+              <li class="flex items-start gap-2"><span class="text-success font-bold shrink-0">✓</span> Multiple contact profiles</li>
+              <li class="flex items-start gap-2"><span class="text-success font-bold shrink-0">✓</span> Works on Salesforce, HubSpot, and more</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       FEATURES
+  ═══════════════════════════════════════════════════════════ -->
+  <section class="py-24 px-4 bg-base-100">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center mb-14">
+        <p class="text-xs font-semibold tracking-widest uppercase text-primary mb-3">Features</p>
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">Everything you need. Nothing you don't.</h2>
+        <p class="text-base-content/60 text-lg max-w-xl mx-auto">
+          A focused, privacy-first autofill tool — no bloat, no cloud, no nonsense.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+
+        <div class="card bg-base-200 border border-base-300 shadow-sm">
+          <div class="card-body gap-3">
+            <div class="w-10 h-10 rounded brand-gradient flex items-center justify-center text-xl" aria-hidden="true">⚡</div>
+            <h3 class="font-bold">One-Click Form Filling</h3>
+            <p class="text-base-content/60 text-sm">Autofill any web form instantly from your saved profile — no manual selection of fields.</p>
+          </div>
+        </div>
+
+        <div class="card bg-base-200 border border-base-300 shadow-sm">
+          <div class="card-body gap-3">
+            <div class="w-10 h-10 rounded brand-gradient flex items-center justify-center text-xl" aria-hidden="true">👤</div>
+            <h3 class="font-bold">Multiple Profiles</h3>
+            <p class="text-base-content/60 text-sm">Separate profiles for job apps, school, personal, and work. Switch in one click.</p>
+          </div>
+        </div>
+
+        <div class="card bg-base-200 border border-base-300 shadow-sm">
+          <div class="card-body gap-3">
+            <div class="w-10 h-10 rounded brand-gradient flex items-center justify-center text-xl" aria-hidden="true">🌐</div>
+            <h3 class="font-bold">Domain-Specific Profiles</h3>
+            <p class="text-base-content/60 text-sm">Link a profile to a website. TETRAform activates the right profile automatically when you visit.</p>
+          </div>
+        </div>
+
+        <div class="card bg-base-200 border border-base-300 shadow-sm">
+          <div class="card-body gap-3">
+            <div class="w-10 h-10 rounded brand-gradient flex items-center justify-center text-xl" aria-hidden="true">🧠</div>
+            <h3 class="font-bold">Smart Field Detection</h3>
+            <p class="text-base-content/60 text-sm">Intelligently maps your data to the right form fields — even on unusual or custom-built forms.</p>
+          </div>
+        </div>
+
+        <div class="card bg-base-200 border border-base-300 shadow-sm">
+          <div class="card-body gap-3">
+            <div class="w-10 h-10 rounded brand-gradient flex items-center justify-center text-xl" aria-hidden="true">🔔</div>
+            <h3 class="font-bold">Helpful Assistant Bar</h3>
+            <p class="text-base-content/60 text-sm">Always visible on pages with forms. One click to fill — ready when you need it, invisible when you don't.</p>
+          </div>
+        </div>
+
+        <div class="card bg-base-200 border border-base-300 shadow-sm">
+          <div class="card-body gap-3">
+            <div class="w-10 h-10 rounded brand-gradient flex items-center justify-center text-xl" aria-hidden="true">✏️</div>
+            <h3 class="font-bold">Custom Fields & Groups</h3>
+            <p class="text-base-content/60 text-sm">Store any data you need, organized your way. Go beyond name and address.</p>
+          </div>
+        </div>
+
+        <div class="card bg-base-200 border border-base-300 shadow-sm">
+          <div class="card-body gap-3">
+            <div class="w-10 h-10 rounded brand-gradient flex items-center justify-center text-xl" aria-hidden="true">💾</div>
+            <h3 class="font-bold">Save on the Fly</h3>
+            <p class="text-base-content/60 text-sm">Capture new form data directly from the popup while browsing — no need to open settings.</p>
+          </div>
+        </div>
+
+        <div class="card bg-base-200 border border-base-300 shadow-sm">
+          <div class="card-body gap-3">
+            <div class="w-10 h-10 rounded brand-gradient flex items-center justify-center text-xl" aria-hidden="true">🚫</div>
+            <h3 class="font-bold">Ignore Specific Websites</h3>
+            <p class="text-base-content/60 text-sm">Disable the assistant on sites where you don't need it — banking, internal tools, or anywhere else.</p>
+          </div>
+        </div>
+
+        <div class="card bg-base-200 border border-base-300 shadow-sm">
+          <div class="card-body gap-3">
+            <div class="w-10 h-10 rounded brand-gradient flex items-center justify-center text-xl" aria-hidden="true">🔐</div>
+            <h3 class="font-bold">Secure Backup & Restore</h3>
+            <p class="text-base-content/60 text-sm">Export all your profiles to a file. Restore them on a new device or after reinstalling Chrome.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       PRIVACY DIFFERENTIATOR
+  ═══════════════════════════════════════════════════════════ -->
+  <section class="py-24 px-4 bg-base-200">
+    <div class="max-w-3xl mx-auto">
+      <div class="card bg-base-100 border-2 border-primary/20 shadow-md">
+        <div class="card-body items-center text-center gap-4 py-12 px-8 md:px-14">
+          <div class="text-5xl" aria-hidden="true">🔒</div>
+          <p class="text-xs font-semibold tracking-widest uppercase text-primary">Privacy-First</p>
+          <h2 class="text-2xl md:text-3xl font-bold">Your data never leaves your device</h2>
+          <p class="text-base-content/60 text-lg leading-relaxed max-w-lg">
+            TETRAform is built privacy-first. All profile data is stored in your browser's local
+            storage — it never touches a server, never syncs to the cloud, and never requires
+            creating an account. You can export and delete everything at any time.
+          </p>
+          <div class="flex flex-wrap gap-3 justify-center mt-2">
+            <span class="badge badge-outline gap-2 py-3 px-4 text-sm font-medium">☁️ No cloud sync</span>
+            <span class="badge badge-outline gap-2 py-3 px-4 text-sm font-medium">👤 No account required</span>
+            <span class="badge badge-outline gap-2 py-3 px-4 text-sm font-medium">💻 100% local storage</span>
+            <span class="badge badge-outline gap-2 py-3 px-4 text-sm font-medium">🗑️ Delete anytime</span>
+            <span class="badge badge-outline gap-2 py-3 px-4 text-sm font-medium">📦 Export your data</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       PRICING
+  ═══════════════════════════════════════════════════════════ -->
+  <section class="py-24 px-4 bg-base-100">
+    <div class="max-w-2xl mx-auto text-center">
+      <p class="text-xs font-semibold tracking-widest uppercase text-primary mb-3">Pricing</p>
+      <h2 class="text-3xl md:text-4xl font-bold mb-4">Free to start. Free to use.</h2>
+      <p class="text-base-content/60 text-lg mb-10">
+        All core features are free. A Pro plan with unlimited profiles is coming soon.
+      </p>
+
+      <div class="card bg-base-100 border-2 border-primary shadow-md max-w-sm mx-auto">
+        <div class="card-body gap-1">
+          <div class="flex items-baseline justify-center gap-2 mb-2">
+            <span class="text-5xl font-extrabold">$0</span>
+            <span class="text-base-content/50">/ forever</span>
+          </div>
+          <p class="text-base-content/50 text-sm mb-6">No credit card. No sign-up.</p>
+
+          <ul class="space-y-3 text-left text-sm mb-8">
+            <li class="flex items-center gap-3"><span class="text-success font-bold text-base">✓</span> Up to 3 profiles</li>
+            <li class="flex items-center gap-3"><span class="text-success font-bold text-base">✓</span> Unlimited form fills</li>
+            <li class="flex items-center gap-3"><span class="text-success font-bold text-base">✓</span> Smart field detection</li>
+            <li class="flex items-center gap-3"><span class="text-success font-bold text-base">✓</span> Domain-specific profile linking</li>
+            <li class="flex items-center gap-3"><span class="text-success font-bold text-base">✓</span> Custom fields & groups</li>
+            <li class="flex items-center gap-3"><span class="text-success font-bold text-base">✓</span> Backup & restore</li>
+            <li class="flex items-center gap-3"><span class="text-success font-bold text-base">✓</span> All core features</li>
+          </ul>
+
+          <a href="https://chromewebstore.google.com/detail/tetraform-smart-form-auto/acgapenhjikhpeicknacehlkalpemigb"
+             target="_blank" rel="noopener noreferrer"
+             class="btn btn-primary btn-block gap-2">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <circle cx="12" cy="12" r="4.5" fill="currentColor" opacity=".9"/>
+              <path d="M12 7.5h9.196A10 10 0 1 0 7.197 20.294L11.7 12.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <path d="M16.5 19.794A10 10 0 0 0 21.196 7.5H12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <path d="M7.197 20.294A10 10 0 0 0 16.5 19.793" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+            Add to Chrome — It's Free
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       FAQ
+  ═══════════════════════════════════════════════════════════ -->
+  <section id="faq" class="py-24 px-4 bg-base-200">
+    <div class="max-w-2xl mx-auto">
+      <div class="text-center mb-12">
+        <p class="text-xs font-semibold tracking-widest uppercase text-primary mb-3">FAQ</p>
+        <h2 class="text-3xl md:text-4xl font-bold">Frequently asked questions</h2>
+      </div>
+
+      <div class="space-y-3">
+
+        <div class="collapse collapse-arrow bg-base-100 border border-base-300 shadow-sm">
+          <input type="checkbox" checked />
+          <div class="collapse-title font-semibold text-base">Is TETRAform free?</div>
+          <div class="collapse-content text-base-content/60 text-sm leading-relaxed">
+            Yes — completely free to use. The free plan includes up to 3 profiles, unlimited
+            form fills, and all core features. A Pro plan with unlimited profiles is coming soon.
+            No credit card, no sign-up required.
+          </div>
+        </div>
+
+        <div class="collapse collapse-arrow bg-base-100 border border-base-300 shadow-sm">
+          <input type="checkbox" />
+          <div class="collapse-title font-semibold text-base">Is my data safe?</div>
+          <div class="collapse-content text-base-content/60 text-sm leading-relaxed">
+            Completely. All profile data is stored in your browser's local storage — it never
+            touches a server. Not ours, not anyone's. No cloud sync, no account, no data collection.
+            You can export or delete everything at any time.
+          </div>
+        </div>
+
+        <div class="collapse collapse-arrow bg-base-100 border border-base-300 shadow-sm">
+          <input type="checkbox" />
+          <div class="collapse-title font-semibold text-base">Does it work on all websites?</div>
+          <div class="collapse-content text-base-content/60 text-sm leading-relaxed">
+            TETRAform works on the vast majority of standard web forms — job boards, scholarship
+            portals, CRMs, contact forms, and more. You can also choose to ignore specific
+            websites where you don't want the assistant to appear.
+          </div>
+        </div>
+
+        <div class="collapse collapse-arrow bg-base-100 border border-base-300 shadow-sm">
+          <input type="checkbox" />
+          <div class="collapse-title font-semibold text-base">What's the difference between profiles?</div>
+          <div class="collapse-content text-base-content/60 text-sm leading-relaxed">
+            Each profile stores a different set of information. Create a "Job Applications"
+            profile with your resume details, a "School" profile with academic info, and a
+            "Personal" profile with your home address. Switch in one click — or link a profile
+            to a website so it activates automatically.
+          </div>
+        </div>
+
+        <div class="collapse collapse-arrow bg-base-100 border border-base-300 shadow-sm">
+          <input type="checkbox" />
+          <div class="collapse-title font-semibold text-base">Do I need to create an account?</div>
+          <div class="collapse-content text-base-content/60 text-sm leading-relaxed">
+            No. TETRAform works without an account — no email, no password, no sign-up.
+            Install it, create a profile, and start filling forms. Your data lives in your browser.
+          </div>
+        </div>
+
+        <div class="collapse collapse-arrow bg-base-100 border border-base-300 shadow-sm">
+          <input type="checkbox" />
+          <div class="collapse-title font-semibold text-base">Can I use it on a new computer?</div>
+          <div class="collapse-content text-base-content/60 text-sm leading-relaxed">
+            Yes. Use the Backup &amp; Restore feature to export your profiles to a file.
+            Install TETRAform on your new machine and import the file — all your profiles are back instantly.
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       CTA BANNER — brand gradient, mirrors hero
+  ═══════════════════════════════════════════════════════════ -->
+  <section class="py-24 px-4 bg-base-100">
+    <div class="max-w-3xl mx-auto">
+      <div class="brand-gradient rounded p-12 md:p-16 text-center text-white relative overflow-hidden">
+        <div class="pointer-events-none absolute inset-0 rounded bg-gradient-to-b from-white/10 to-transparent" aria-hidden="true"></div>
+        <h2 class="text-3xl md:text-4xl font-extrabold mb-4 relative">Stop retyping. Start applying.</h2>
+        <p class="text-white/80 text-lg mb-8 relative">
+          Join job seekers, students, and freelancers who fill forms in seconds — not minutes.
+        </p>
+        <a href="https://chromewebstore.google.com/detail/tetraform-smart-form-auto/acgapenhjikhpeicknacehlkalpemigb"
+           target="_blank" rel="noopener noreferrer"
+           class="btn btn-lg bg-white text-primary hover:bg-white/95 border-none gap-3 shadow-xl relative px-8">
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <circle cx="12" cy="12" r="4.5" fill="currentColor" opacity=".9"/>
+            <path d="M12 7.5h9.196A10 10 0 1 0 7.197 20.294L11.7 12.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <path d="M16.5 19.794A10 10 0 0 0 21.196 7.5H12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <path d="M7.197 20.294A10 10 0 0 0 16.5 19.793" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          Add to Chrome — It's Free
+        </a>
+        <p class="mt-5 text-white/50 text-sm relative">No account required · Free forever · Works on any website</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       FOOTER
+  ═══════════════════════════════════════════════════════════ -->
+  <footer class="border-t border-base-300 bg-base-200 px-4 py-10">
+    <div class="max-w-5xl mx-auto flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+      <div class="flex flex-col gap-1">
+        <a href="/" class="flex items-center gap-2 font-bold text-base hover:opacity-80 transition-opacity">
+          <img src="public/icon48.png" alt="TETRAform" class="w-6 h-6 rounded" />
+          TETRAform
+        </a>
+        <p class="text-xs text-base-content/40 mt-1 max-w-xs">
+          Free form autofill Chrome extension. Fill any form in one click.
+        </p>
+      </div>
+
+      <nav class="flex flex-wrap gap-x-6 gap-y-2" aria-label="Footer navigation">
+        <a href="https://chromewebstore.google.com/detail/tetraform-smart-form-auto/acgapenhjikhpeicknacehlkalpemigb"
+           target="_blank" rel="noopener noreferrer"
+           class="text-sm text-base-content/50 hover:text-base-content transition-colors">Chrome Web Store</a>
+        <a href="mailto:contact@tetraform.app"
+           class="text-sm text-base-content/50 hover:text-base-content transition-colors">Contact</a>
+        <a href="https://tetraform.app/privacy"
+           class="text-sm text-base-content/50 hover:text-base-content transition-colors">Privacy Policy</a>
+      </nav>
+
+      <p class="text-xs text-base-content/30">&copy; <span id="year"></span> TETRAform. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+
+</body>
+</html>
