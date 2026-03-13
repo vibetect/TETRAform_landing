@@ -1,13 +1,13 @@
-# Privacy Policy for TetraForm
+# Privacy Policy for TETRAform
 
 **Last Updated:** December 11, 2025
 
-TetraForm ("we", "our", or "us") is committed to protecting your privacy. This Privacy Policy explains how your information is collected, used, and disclosed by the TetraForm Chrome Extension.
+TETRAform ("we", "our", or "us") is committed to protecting your privacy. This Privacy Policy explains how your information is collected, used, and disclosed by the TETRAform Chrome Extension.
 
 ## 1. Information Collection and Use
 
 ### Local Storage
-TetraForm is designed with a "privacy-first" approach. The primary function of the extension is to save and autofill form data.
+TETRAform is designed with a "privacy-first" approach. The primary function of the extension is to save and autofill form data.
 *   **All profile data**, including names, addresses, emails, and phone numbers, is stored **locally on your device** using Chrome's secure storage API (`chrome.storage.local`).
 *   This data **never leaves your computer** under normal operation of the core autofill features. We do not have access to your saved profiles.
 
@@ -19,11 +19,11 @@ We use Google Firebase for specific, optional features:
 
 ## 2. Permissions
 
-TetraForm requires specific permissions to function:
+TETRAform requires specific permissions to function:
 
 *   **`storage`**: To save your profiles locally on your device.
 *   **`activeTab`** & **`scripting`**: To detect forms on the page you are visiting and insert the autofill data when you request it.
-*   **`host_permissions` (<all_urls>)**: TetraForm is a general-purpose form filler. It needs to be able to run on any website where you might encounter a form. We do not track your browsing history. The extension only activates its script when it detects a form or when you manually trigger it.
+*   **`host_permissions` (<all_urls>)**: TETRAform is a general-purpose form filler. It needs to be able to run on any website where you might encounter a form. We do not track your browsing history. The extension only activates its script when it detects a form or when you manually trigger it.
 
 ## 3. Data Security
 
@@ -37,4 +37,4 @@ We may update our Privacy Policy from time to time. We will notify you of any ch
 
 ## 5. Contact Us
 
-If you have any questions about this Privacy Policy, please contact us via the feedback form in the extension settings.
+If you have any questions about this Privacy Policy, please contact us at [contact@tetraform.app](mailto:contact@tetraform.app) or via the feedback form in the extension settings.

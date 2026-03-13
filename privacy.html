@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="corporate">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy – TETRAform</title>
+  <meta name="description" content="Privacy Policy for TETRAform – Free Chrome form autofill extension. Your data never leaves your device." />
+  <link rel="canonical" href="https://tetraform.app/privacy" />
+  <link rel="icon" type="image/png" sizes="128x128" href="public/icon128.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="public/icon16.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@5/dist/full.min.css" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root {
+      --color-base-100: oklch(100% 0 0);
+      --color-base-200: oklch(93% 0 0);
+      --color-base-300: oklch(86% 0 0);
+      --color-base-content: oklch(22.389% 0.031 278.072);
+      --color-primary: oklch(58% 0.158 241.966);
+      --color-primary-content: oklch(100% 0 0);
+      --color-accent: oklch(60% 0.118 184.704);
+      --radius-box: 0.25rem;
+      --radius-field: 0.25rem;
+      --radius-selector: 0.25rem;
+    }
+    body { font-family: 'Inter', sans-serif; }
+    .brand-gradient {
+      background-image: linear-gradient(to right, #06b6d4, #2563eb);
+    }
+  </style>
+</head>
+<body class="bg-base-100 text-base-content">
+
+  <!-- Nav -->
+  <nav class="navbar bg-base-100/90 backdrop-blur-sm sticky top-0 z-50 border-b border-base-200 px-4 lg:px-8">
+    <div class="navbar-start">
+      <a href="/" class="flex items-center gap-2 no-underline">
+        <img src="public/icon48.png" alt="TETRAform logo" class="w-7 h-7" />
+        <span class="font-bold text-base-content text-lg">TETRAform</span>
+      </a>
+    </div>
+    <div class="navbar-end">
+      <a href="https://chromewebstore.google.com/detail/tetraform-smart-form-auto/acgapenhjikhpeicknacehlkalpemigb"
+         target="_blank" rel="noopener"
+         class="btn btn-primary btn-sm">
+        Add to Chrome — Free
+      </a>
+    </div>
+  </nav>
+
+  <!-- Header -->
+  <header class="brand-gradient py-12 px-4 text-center text-white">
+    <h1 class="text-3xl lg:text-4xl font-bold mb-2">Privacy Policy</h1>
+    <p class="text-white/80">Last updated: December 11, 2025</p>
+  </header>
+
+  <!-- Content -->
+  <main class="max-w-3xl mx-auto px-4 py-12">
+
+    <div class="prose max-w-none">
+
+      <p class="text-lg text-base-content/80 mb-8">
+        TETRAform ("we", "our", or "us") is committed to protecting your privacy. This Privacy Policy explains how your information is collected, used, and disclosed by the TETRAform Chrome Extension.
+      </p>
+
+      <h2 class="text-xl font-bold mt-8 mb-3">1. Information Collection and Use</h2>
+
+      <h3 class="text-base font-semibold mt-6 mb-2">Local Storage</h3>
+      <p>TETRAform is designed with a "privacy-first" approach. The primary function of the extension is to save and autofill form data.</p>
+      <ul class="list-disc pl-6 mt-2 space-y-1">
+        <li><strong>All profile data</strong>, including names, addresses, emails, and phone numbers, is stored <strong>locally on your device</strong> using Chrome's secure storage API (<code>chrome.storage.local</code>).</li>
+        <li>This data <strong>never leaves your computer</strong> under normal operation of the core autofill features. We do not have access to your saved profiles.</li>
+      </ul>
+
+      <h3 class="text-base font-semibold mt-6 mb-2">External Services (Firebase)</h3>
+      <p>We use Google Firebase for specific, optional features:</p>
+      <ol class="list-decimal pl-6 mt-2 space-y-1">
+        <li><strong>Authentication</strong>: If you create an account to sync settings or access premium features, your email and authentication credentials are securely managed by Firebase Authentication.</li>
+        <li><strong>Feedback Submission</strong>: If you use the "Send Feedback" form within the extension, the message and your email (if provided) are sent to our database hosted on Cloud Firestore.</li>
+        <li><strong>Analytics (Optional)</strong>: We may collect anonymous usage data (e.g., number of profiles created, daily usage counts) to improve the extension. This data is not linked to your personal profile information.</li>
+      </ol>
+
+      <h2 class="text-xl font-bold mt-8 mb-3">2. Permissions</h2>
+      <p>TETRAform requires specific permissions to function:</p>
+      <ul class="list-disc pl-6 mt-2 space-y-1">
+        <li><strong><code>storage</code></strong>: To save your profiles locally on your device.</li>
+        <li><strong><code>activeTab</code> &amp; <code>scripting</code></strong>: To detect forms on the page you are visiting and insert the autofill data when you request it.</li>
+        <li><strong><code>host_permissions</code> (&lt;all_urls&gt;)</strong>: TETRAform is a general-purpose form filler. It needs to be able to run on any website where you might encounter a form. We do not track your browsing history. The extension only activates its script when it detects a form or when you manually trigger it.</li>
+      </ul>
+
+      <h2 class="text-xl font-bold mt-8 mb-3">3. Data Security</h2>
+      <ul class="list-disc pl-6 mt-2 space-y-1">
+        <li>We prioritize the security of your data. Local data is sandboxed by the Chrome browser.</li>
+        <li>Network communications for feedback or authentication are encrypted using industry-standard HTTPS/TLS protocols.</li>
+        <li><strong>Sensitive Data</strong>: We explicitly <strong>block</strong> the saving of highly sensitive fields such as Credit Card numbers (CVV), passwords, and CAPTCHA codes to prevent accidental storage of critical secrets.</li>
+      </ul>
+
+      <h2 class="text-xl font-bold mt-8 mb-3">4. Updates to This Policy</h2>
+      <p>We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the "Last Updated" date.</p>
+
+      <h2 class="text-xl font-bold mt-8 mb-3">5. Contact Us</h2>
+      <p>If you have any questions about this Privacy Policy, please contact us at <a href="mailto:contact@tetraform.app" class="text-primary hover:underline">contact@tetraform.app</a> or via the feedback form in the extension settings.</p>
+
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-base-200 border-t border-base-300 py-8 px-4 text-center text-sm text-base-content/60">
+    <div class="flex items-center justify-center gap-2 mb-3">
+      <img src="public/icon48.png" alt="TETRAform" class="w-5 h-5 opacity-70" />
+      <span class="font-semibold text-base-content/80">TETRAform</span>
+    </div>
+    <div class="flex justify-center gap-4 flex-wrap">
+      <a href="/" class="hover:text-primary transition-colors">Home</a>
+      <a href="https://chromewebstore.google.com/detail/tetraform-smart-form-auto/acgapenhjikhpeicknacehlkalpemigb"
+         target="_blank" rel="noopener" class="hover:text-primary transition-colors">Chrome Web Store</a>
+      <a href="/privacy" class="hover:text-primary transition-colors">Privacy Policy</a>
+      <a href="mailto:contact@tetraform.app" class="hover:text-primary transition-colors">Contact</a>
+    </div>
+    <p class="mt-3">© 2025 TETRAform. Your data never leaves your device.</p>
+  </footer>
+
+</body>
+</html>
