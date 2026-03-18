@@ -30,14 +30,22 @@
 
 ```
 TETRAform_landing/
-├── index.html              ← the entire landing page (single file, fully static)
+├── index.html              ← landing page
+├── privacy.html            ← privacy policy page
+├── shared.js               ← reusable header & footer (single source of truth)
 ├── CNAME                   ← tetraform.app (GitHub Pages custom domain)
+├── CLAUDE.md               ← agent rules for this repo
 ├── .gitignore
-├── public/                 ← icons copied from the extension
+├── public/                 ← icons + screenshots
 │   ├── icon16.png
 │   ├── icon48.png
 │   ├── icon128.png
-│   └── tetraform-logo.png
+│   ├── tetraform-logo.png
+│   └── screenshots/        ← pre-cropped product UI images from web store
+│       ├── main.jpg
+│       ├── feature-profiles.jpg
+│       ├── feature-autofill.jpg
+│       └── feature-popup.jpg
 └── docs/
     ├── LANDING-PAGE.md     ← this file
     └── PRIVACY_POLICY.md
@@ -106,18 +114,25 @@ Set up in Cloudflare Email Routing:
 | Layer | What | Why |
 |---|---|---|
 | CSS framework | DaisyUI v5 via CDN | Same library as the extension (corporate theme) |
-| Utility classes | Tailwind CSS v3 via CDN | No build step; CDN generates utilities on the fly |
+| Utility classes | Tailwind CSS v4 via CDN (`@tailwindcss/browser@4`) | No build step; CDN generates utilities on the fly |
 | Theme | DaisyUI `corporate` (light) | Identical to the extension's popup/settings UI |
 | Font | Inter via Google Fonts | Polish on marketing copy |
-| Icons | Copied from extension `/public/` | Brand consistency |
+| Icons | Lucide via CDN (`unpkg.com/lucide@latest`) | Consistent with extension (lucide-react) |
 | Hosting | GitHub Pages | Free, git-based, custom domain support |
 
 All dependencies are loaded from CDN — no `package.json`, no `npm install` required.
 
 **CDN links in `<head>`:**
 ```html
-<link href="https://cdn.jsdelivr.net/npm/daisyui@5/dist/full.min.css" rel="stylesheet" />
-<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+<link href="https://cdn.jsdelivr.net/npm/daisyui@5/themes.css" rel="stylesheet" type="text/css" />
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+```
+
+**Scripts before `</body>`:**
+```html
+<script src="https://unpkg.com/lucide@latest"></script>
+<script>lucide.createIcons();</script>
 ```
 
 ---
@@ -126,41 +141,43 @@ All dependencies are loaded from CDN — no `package.json`, no `npm install` req
 
 The landing page intentionally mirrors the extension's visual identity.
 
-### Brand gradient (hero + CTA banner)
+### Brand gradient (header ONLY)
 Exact match to `HeaderBar.tsx` in the extension:
 ```css
 background-image: linear-gradient(to right, #06b6d4, #2563eb);
 ```
-Applied via `.brand-gradient` utility class (defined in `<style>` block in `index.html`).
+Applied via `.brand-gradient` utility class (defined in `<style>` block in each HTML file).
+**Rule:** Gradient is used ONLY on the header bar — never on hero, CTA, step circles, feature icons, or other elements.
 
 ### DaisyUI corporate theme
+Full oklch color system with sharp corners (0.25rem), 1px borders, no depth/noise:
 ```css
-/* Sharp corners (matching the extension) */
---radius-box:      0.25rem;
---radius-field:    0.25rem;
+--radius-box: 0.25rem;
+--radius-field: 0.25rem;
 --radius-selector: 0.25rem;
-
-/* Primary — blue */
---color-primary: oklch(58% 0.158 241.966);   /* same as extension */
-
-/* Accent — cyan */
---color-accent: oklch(60% 0.118 184.704);    /* same as extension */
+--border: 1px;
+--depth: 0;
+--noise: 0;
+--color-primary: oklch(58% 0.158 241.966);
+--color-accent: oklch(60% 0.118 184.704);
 ```
 
 ### Colour usage
 | Element | Class |
 |---|---|
-| Hero background | `.brand-gradient` (cyan→blue) |
-| CTA banner background | `.brand-gradient` (cyan→blue) |
-| Page body | `bg-base-100` (white) |
-| Alternating sections | `bg-base-200` (light grey) |
-| Cards on white | `bg-base-200 border border-base-300` |
-| Cards on grey | `bg-base-100 border border-base-300` |
+| Header | `.brand-gradient sticky top-0 z-50` (cyan→blue) |
+| White sections | `bg-base-100` (white) |
+| Alternating sections | `bg-section-alt` (oklch 96.5% — lighter than base-200) |
+| Footer | `bg-base-200` (light grey) |
+| Cards | `border border-base-200 shadow-sm` |
 | Primary CTA button | `btn btn-primary` (blue) |
-| CTA on gradient | `bg-white text-primary` (white button, blue text) |
+| CTA banner card | `bg-primary text-primary-content` (solid blue) |
+| Feature icon boxes | `bg-primary/10 text-primary rounded-lg` (light tinted) |
+| Step number circles | `bg-primary text-primary-content rounded-full` |
 
-### Step number circles
-Use `.brand-gradient` with white text — consistent with the gradient header.
+### Icons
+All icons use Lucide via CDN. Use `<i data-lucide="icon-name" class="w-5 h-5">` syntax.
+CTA buttons use `data-lucide="chrome"` for the Chrome icon.
 
 ---
 
@@ -168,21 +185,36 @@ Use `.brand-gradient` with white text — consistent with the gradient header.
 
 | # | Section | Background | Purpose |
 |---|---|---|---|
-| 1 | Nav (sticky) | `bg-base-100/90` + blur | Logo + "Add to Chrome" CTA |
-| 2 | Hero | `.brand-gradient` (cyan→blue) | Headline, sub, primary CTA, trust badges |
-| 3 | Social proof bar | `bg-base-200` | "Works on: LinkedIn, Indeed, Greenhouse…" |
-| 4 | How it works | `bg-base-100` | 3-step cards with numbered gradient circles |
-| 5 | Who it's for | `bg-base-200` | 4 persona cards (Job Seekers, Students, Freelancers, Sales) |
-| 6 | Features | `bg-base-100` | 9-feature grid with gradient icon boxes |
-| 7 | Privacy callout | `bg-base-200` | Differentiator 1 — "Your data never leaves your device" |
-| 8 | Pricing | `bg-base-100` | $0 free plan card |
-| 9 | FAQ | `bg-base-200` | 6 collapse items |
-| 10 | CTA banner | `.brand-gradient` (cyan→blue) | "Stop retyping. Start applying." |
-| 11 | Footer | `bg-base-200` | Logo, links (Store, Contact, Privacy) |
+| 1 | Header | `.brand-gradient` (sticky) | Logo + section nav links + mobile dropdown (matches HeaderBar.tsx) |
+| 2 | Hero | `bg-base-100` | 2-column split: headline + CTAs (left), Main screenshot (right). Trust badges below. |
+| 3 | Social proof bar | `bg-section-alt` | "Works on: LinkedIn, Indeed, Greenhouse…" |
+| 4 | Problem | `bg-base-100` | Pain points — why form filling is tedious |
+| 5 | How it works | `bg-section-alt` | 3-step cards: create profiles → save fields → auto-detect & fill |
+| 6 | See it in action | `bg-base-100` | DaisyUI CSS carousel with 3 feature screenshots + captions |
+| 7 | Who is it for | `bg-section-alt` | 4 persona cards with Lucide icons |
+| 8 | Comparison | `bg-base-100` | TETRAform vs Chrome Autofill vs Others (table on desktop, cards on mobile) |
+| 9 | Features | `bg-section-alt` | 11-feature grid with Lucide icons (includes sensitive field protection, keyboard shortcuts) |
+| 10 | Privacy | `bg-base-100` | "Your data never leaves your device" + badges |
+| 11 | Pricing | `bg-section-alt` | $0 free plan card (3 profiles, 15 fills/day) |
+| 12 | FAQ | `bg-base-100` | 6 collapse-arrow items (radio — one open at a time) |
+| 13 | CTA | `bg-section-alt` | Card with `bg-primary text-primary-content` (solid, not gradient) |
+| 14 | Footer | `bg-base-200` | Logo + tagline, nav links, copyright (shared with privacy.html) |
+
+**Section backgrounds:** Alternating between `bg-base-100` (white) and `bg-section-alt` (oklch 96.5% — lighter than base-200). Cards use `border border-base-200 shadow-sm` for additional separation.
 
 ### Section IDs for nav links
 - `#how-it-works` — How it works section
 - `#faq` — FAQ section
+
+### Shared elements (index.html + privacy.html)
+Both pages share: CDN stack, `<style>` block (brand-gradient), and header/footer via `shared.js`.
+
+**`shared.js`** — renders header and footer into placeholder `<div>` elements:
+- `<div id="site-header"></div>` — receives the gradient header
+- `<div id="site-footer"></div>` — receives the footer
+- Called via `renderShared({ page: 'home' })` or `renderShared({ page: 'privacy' })`
+- Header nav only shown on home page; privacy page uses same header with no nav (clean look)
+- **Edit header/footer ONLY in `shared.js`** — never duplicate in HTML files
 
 ---
 
@@ -207,9 +239,9 @@ The Chrome Web Store listing is indexed by Google. External pages that **link to
 Marks up the page as a `SoftwareApplication` for Google rich results.
 
 ### Hero sub-headline (keyword-dense, SEO-optimised)
-> *TETRAform is a free* ***form autofill extension for Chrome***. *Automatically fill job applications, scholarship forms, and web forms in one click. Multiple profiles. 100% private — your data never leaves your device.*
+> *TETRAform is a free* ***form autofill Chrome extension*** *— an automatic form filler that lets you fill out job applications, scholarship forms, and web forms in one click. Multiple profiles. 100% private — your data never leaves your device.*
 
-This front-loads: `form autofill extension for Chrome`, `fill job applications`, `scholarship forms`, `web forms` — all primary search terms.
+This front-loads: `form autofill Chrome extension`, `automatic form filler`, `fill out job applications`, `scholarship forms`, `web forms` — all primary and secondary search terms.
 
 ---
 
@@ -221,15 +253,15 @@ This front-loads: `form autofill extension for Chrome`, `fill job applications`,
 | `form autofill` | Title tag, hero sub, features heading |
 | `form filler` | Title tag, meta description |
 | `autofill chrome extension` | Hero sub, meta description |
-| `auto fill forms` | Hero sub, how-it-works |
+| `auto fill forms` | Features subtitle, how-it-works |
 
 ### Secondary
 | Keyword | Where used |
 |---|---|
-| `autofill extension` | Body copy |
-| `fill web forms` | Hero sub |
-| `automatic form filler` | Features section |
-| `one-click autofill` | How it works step 3 |
+| `autofill extension` | Features subtitle, body copy |
+| `fill web forms` | Problem section |
+| `automatic form filler` | Hero sub-headline |
+| `one-click autofill` | Features section (One-Click Form Filling card) |
 
 ### Long-tail (persona-specific)
 | Keyword | Where used |
@@ -237,7 +269,7 @@ This front-loads: `form autofill extension for Chrome`, `fill job applications`,
 | `job application autofill` | Job Seekers persona card |
 | `autofill job applications` | Job Seekers card |
 | `scholarship form autofill` | Students card |
-| `CRM autofill` | Sales & Business card |
+| `CRM autofill` | Sales & Business card (body copy) |
 
 ### Keywords to avoid
 - "Smart" — generic, not searched
@@ -313,6 +345,17 @@ Icons are stored in `public/` — copied from the extension's `/public/` folder.
 | `public/icon16.png` | `<link rel="icon">` (small favicon) |
 | `public/tetraform-logo.png` | Available if needed for larger logo treatments |
 
+### Product screenshots
+
+Pre-cropped from Chrome Web Store images (right side only — product UI, no marketing text).
+
+| File | Content | Used in |
+|---|---|---|
+| `public/screenshots/main.jpg` | Greenhouse form filled + assistant bar + "18 fields filled in 3s" | Hero (right column) |
+| `public/screenshots/feature-profiles.jpg` | Settings Profiles tab — 3 profiles | Carousel slide 1 |
+| `public/screenshots/feature-autofill.jpg` | Greenhouse form + assistant bar + profile dropdown | Carousel slide 2 |
+| `public/screenshots/feature-popup.jpg` | Extension popup overlay — Save, Fill, Highlight, Ignore | Carousel slide 3 |
+
 ### OG image (to create)
 Create `public/og-image.png` at 1200×630px for social sharing previews.
 Content: gradient background (cyan→blue) + TETRAform logo + headline "Fill any web form in under 5 seconds".
@@ -355,10 +398,13 @@ Post in these subreddits (be a contributor, not an advertiser):
 
 ## 14. Implementation Checklist
 
-### Landing page (done ✓)
-- [x] Static `index.html` with DaisyUI v5 + Tailwind CDN
-- [x] DaisyUI `corporate` theme matching the extension
-- [x] Brand gradient (`#06b6d4 → #2563eb`) on hero and CTA banner
+### Landing page (done)
+- [x] Static `index.html` with DaisyUI v5 + Tailwind v4 CDN
+- [x] DaisyUI `corporate` theme with full oklch CSS variables
+- [x] Brand gradient ONLY on header bar (matches HeaderBar.tsx)
+- [x] Alternating `bg-base-100`/`bg-base-200` section backgrounds
+- [x] All icons replaced with Lucide via CDN
+- [x] 14-section conversion-optimized layout (hero, problem, carousel, comparison, etc.)
 - [x] Extension icons copied to `public/`
 - [x] `CNAME` set to `tetraform.app`
 - [x] SEO meta tags, canonical URL, OG tags
@@ -366,14 +412,12 @@ Post in these subreddits (be a contributor, not an advertiser):
 - [x] All 5 personas addressed
 - [x] All 3 differentiators present
 - [x] Keyboard shortcut callout (Ctrl+Shift+F)
-- [x] Privacy section with badges
+- [x] Privacy section with Lucide icon badges
+- [x] `privacy.html` with shared header/footer
 
 ### To do
-- [ ] Enable GitHub Pages in repo settings (Settings → Pages → Deploy from branch → main)
-- [ ] Add DNS records in Cloudflare (Section 4)
-- [ ] Set up `contact@tetraform.app` in Cloudflare Email Routing
 - [ ] Create `public/og-image.png` (1200×630, gradient bg + headline)
-- [ ] Create `privacy.html` so `tetraform.app/privacy` resolves
+- [ ] Visual verification: test both pages in browser
 
 ### Chrome Web Store (separate — see SEO-STRATEGY.md in the extension repo)
 - [ ] Update title → `Form Autofill & Filler - TETRAform` (via `manifest.json`)
