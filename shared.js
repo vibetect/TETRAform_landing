@@ -19,13 +19,13 @@ function headerHTML(page) {
 
   // Nav links only shown on the home page
   const navLinks = `<a href="#how-it-works" class="px-3 py-2 hover:bg-white/20 rounded-lg transition-colors text-white text-sm">How it works</a>
-       <a href="#who-its-for" class="px-3 py-2 hover:bg-white/20 rounded-lg transition-colors text-white text-sm">Who is it for</a>
+       <a href="#who-is-it-for" class="px-3 py-2 hover:bg-white/20 rounded-lg transition-colors text-white text-sm">Who is it for</a>
        <a href="#features" class="px-3 py-2 hover:bg-white/20 rounded-lg transition-colors text-white text-sm">Features</a>
        <a href="#pricing" class="px-3 py-2 hover:bg-white/20 rounded-lg transition-colors text-white text-sm">Pricing</a>
        <a href="#faq" class="px-3 py-2 hover:bg-white/20 rounded-lg transition-colors text-white text-sm">FAQ</a>`;
 
   const mobileLinks = `<li><a href="#how-it-works">How it works</a></li>
-       <li><a href="#who-its-for">Who is it for</a></li>
+       <li><a href="#who-is-it-for">Who is it for</a></li>
        <li><a href="#features">Features</a></li>
        <li><a href="#pricing">Pricing</a></li>
        <li><a href="#faq">FAQ</a></li>
