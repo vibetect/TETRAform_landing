@@ -18,23 +18,29 @@ function headerHTML(page) {
   const isHome = page === 'home';
 
   // Nav links only shown on the home page
-  const navLinks = `<a href="#how-it-works" class="px-3 py-2 hover:bg-white/20 rounded-lg transition-colors text-white text-sm">How it works</a>
-       <a href="#who-is-it-for" class="px-3 py-2 hover:bg-white/20 rounded-lg transition-colors text-white text-sm">Who is it for</a>
-       <a href="#features" class="px-3 py-2 hover:bg-white/20 rounded-lg transition-colors text-white text-sm">Features</a>
-       <a href="#pricing" class="px-3 py-2 hover:bg-white/20 rounded-lg transition-colors text-white text-sm">Pricing</a>
-       <a href="#faq" class="px-3 py-2 hover:bg-white/20 rounded-lg transition-colors text-white text-sm">FAQ</a>`;
+  const navLinks = `<a href="#how-it-works" class="px-2 py-1 hover:bg-white/20 rounded-lg transition-colors text-white text-xs whitespace-nowrap">HOW IT WORKS</a>
+       <a href="#the-problem" class="px-2 py-1 hover:bg-white/20 rounded-lg transition-colors text-white text-xs whitespace-nowrap">PROBLEM</a>
+       <a href="#see-it-in-action" class="px-2 py-1 hover:bg-white/20 rounded-lg transition-colors text-white text-xs whitespace-nowrap">DEMO</a>
+       <a href="#who-is-it-for" class="px-2 py-1 hover:bg-white/20 rounded-lg transition-colors text-white text-xs whitespace-nowrap">WHO IS IT FOR</a>
+       <a href="#comparison" class="px-2 py-1 hover:bg-white/20 rounded-lg transition-colors text-white text-xs whitespace-nowrap">COMPARE</a>
+       <a href="#features" class="px-2 py-1 hover:bg-white/20 rounded-lg transition-colors text-white text-xs whitespace-nowrap">FEATURES</a>
+       <a href="#pricing" class="px-2 py-1 hover:bg-white/20 rounded-lg transition-colors text-white text-xs whitespace-nowrap">PRICING</a>
+       <a href="#faq" class="px-2 py-1 hover:bg-white/20 rounded-lg transition-colors text-white text-xs whitespace-nowrap">FAQ</a>`;
 
-  const mobileLinks = `<li><a href="#how-it-works">How it works</a></li>
-       <li><a href="#who-is-it-for">Who is it for</a></li>
-       <li><a href="#features">Features</a></li>
-       <li><a href="#pricing">Pricing</a></li>
+  const mobileLinks = `<li><a href="#how-it-works">HOW IT WORKS</a></li>
+       <li><a href="#the-problem">PROBLEM</a></li>
+       <li><a href="#see-it-in-action">DEMO</a></li>
+       <li><a href="#who-is-it-for">WHO IS IT FOR</a></li>
+       <li><a href="#comparison">COMPARE</a></li>
+       <li><a href="#features">FEATURES</a></li>
+       <li><a href="#pricing">PRICING</a></li>
        <li><a href="#faq">FAQ</a></li>
        <li><a href="${STORE_URL}" target="_blank" rel="noopener noreferrer">Add to Chrome</a></li>`;
 
   // On non-home pages, hide the nav entirely (same header, just no menu)
   const navSection = isHome
-    ? `<nav class="hidden md:flex items-center gap-1">${navLinks}</nav>
-      <div class="dropdown dropdown-end md:hidden">
+    ? `<nav class="hidden xl:flex items-center gap-0.5">${navLinks}</nav>
+      <div class="dropdown dropdown-end xl:hidden">
         <div tabindex="0" role="button" class="p-2 hover:bg-white/20 rounded-lg transition-colors">
           <i data-lucide="menu" class="w-6 h-6 text-white"></i>
         </div>
