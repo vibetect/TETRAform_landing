@@ -187,7 +187,7 @@ CTA buttons use `data-lucide="chrome"` for the Chrome icon.
 |---|---|---|---|
 | 1 | Header | `.brand-gradient` (sticky) | Logo + section nav links + mobile dropdown (matches HeaderBar.tsx) |
 | 2 | Hero | `bg-base-100` | 2-column split: headline + CTAs (left), Main screenshot (right). Trust badges below. |
-| 3 | Social proof bar | `bg-section-alt` | "Works on: LinkedIn, Indeed, Greenhouse…" |
+| 3 | Trust + social proof bar (`#trust`) | `bg-section-alt` | "600+ installs on the Chrome Web Store" card (links to the store) + SaaSHub "Approved" badge, then "Works on: LinkedIn, Indeed, Greenhouse…". Install figure comes only from the Web Store dashboard (603 on 20 Oct 2026); update it there first. |
 | 4 | Problem | `bg-base-100` | Pain points — why form filling is tedious |
 | 5 | How it works | `bg-section-alt` | 3-step cards: create profiles → save fields → auto-detect & fill |
 | 6 | See it in action | `bg-base-100` | DaisyUI CSS carousel with 3 feature screenshots + captions |
@@ -195,7 +195,7 @@ CTA buttons use `data-lucide="chrome"` for the Chrome icon.
 | 8 | Comparison | `bg-base-100` | TETRAform vs Chrome Autofill vs Others (table on desktop, cards on mobile) |
 | 9 | Features | `bg-section-alt` | 11-feature grid with Lucide icons (includes sensitive field protection, keyboard shortcuts) |
 | 10 | Privacy | `bg-base-100` | "Your data never leaves your device" + badges |
-| 11 | Pricing | `bg-section-alt` | $0 free plan card (3 profiles, 15 fills/day) |
+| 11 | Pricing | `bg-section-alt` | $0 free plan card (3 profiles, 15 form fills/day; saving and profile editing unlimited, matching extension v1.3.7) |
 | 12 | FAQ | `bg-base-100` | 6 collapse-arrow items (radio — one open at a time) |
 | 13 | CTA | `bg-section-alt` | Card with `bg-primary text-primary-content` (solid, not gradient) |
 | 14 | Footer | `bg-base-200` | Logo + tagline, nav links, copyright (shared with privacy.html) |
