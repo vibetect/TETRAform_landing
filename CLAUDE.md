@@ -60,3 +60,9 @@ Keep `docs/` updated after every change:
 ## SYNCING WITH EXTENSION
 When the extension's brand colors, copy, or features change — update the landing page too.
 Extension store link: https://chromewebstore.google.com/detail/tetraform-smart-form-auto/acgapenhjikhpeicknacehlkalpemigb
+
+## BUILD, TEST & MERGE
+- There is no build step here. After a change, check the edited pages (HTML valid, links and `shared.js` header/footer render) before reporting done. Do not ask for permission.
+- If the change also touches TETRAform_local, run `npm run build` and `npm test` there.
+- Sync to GitHub without asking: commit, push the working branch, open a pull request, and merge it to `main` yourself once checks pass.
+- Merging to `main` deploys to https://tetraform.app/ immediately, so re-read the diff before merging and tell Anastasia what went live.
