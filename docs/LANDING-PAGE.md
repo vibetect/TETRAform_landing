@@ -194,7 +194,7 @@ CTA buttons use `data-lucide="chrome"` for the Chrome icon.
 | 7 | Who is it for | `bg-section-alt` | 4 persona cards with Lucide icons |
 | 8 | Comparison | `bg-base-100` | TETRAform vs Chrome Autofill vs Others (table on desktop, cards on mobile) |
 | 9 | Features | `bg-section-alt` | 11-feature grid with Lucide icons (includes sensitive field protection, keyboard shortcuts) |
-| 10 | Privacy | `bg-base-100` | "Your data never leaves your device" + badges |
+| 10 | Privacy | `bg-base-100` | "Your profiles stay on your device" + badges (feedback form is the only data sent) |
 | 11 | Pricing | `bg-section-alt` | $0 free plan card (3 profiles, 15 form fills/day; saving and profile editing unlimited, matching extension v1.3.7) |
 | 12 | FAQ | `bg-base-100` | 6 collapse-arrow items (radio — one open at a time) |
 | 13 | CTA | `bg-section-alt` | Card with `bg-primary text-primary-content` (solid, not gradient) |
@@ -226,22 +226,22 @@ The Chrome Web Store listing is indexed by Google. External pages that **link to
 - Use target keywords naturally in headings and body text
 - Load fast (it does — no JS frameworks, CDN-only)
 
-### SEO meta tags (already in `<head>`)
+### SEO meta tags (already in `<head>`, updated 19 Nov 2026)
 ```html
-<title>TETRAform – Free Form Autofill Chrome Extension</title>
-<meta name="description" content="Free form autofill Chrome extension. Fill job applications,
-  scholarships, and web forms in one click. Multiple profiles. 100% private — your data
-  never leaves your device." />
+<title>Free Autofill Extension &amp; Form Filler for Chrome | TETRAform</title>
+<meta name="description" content="Free autofill Chrome extension and form filler with multiple
+  profiles. Fill job applications and web forms in one click. Your profiles stay on your device." />
 <link rel="canonical" href="https://tetraform.app/" />
 ```
 
 ### Structured data (JSON-LD, already in `<head>`)
 Marks up the page as a `SoftwareApplication` for Google rich results.
 
-### Hero sub-headline (keyword-dense, SEO-optimised)
-> *TETRAform is a free* ***form autofill Chrome extension*** *— an automatic form filler that lets you fill out job applications, scholarship forms, and web forms in one click. Multiple profiles. 100% private — your data never leaves your device.*
+### Hero (updated 19 Nov 2026)
+Eyebrow "Free autofill extension for Chrome", H1 "Fill repetitive forms in one click", then:
+> *TETRAform is a free* ***form filler for Chrome****. Save your details once, pick a profile, and fill job applications, sign-ups and web forms in one click. Your saved profiles stay on your device, with no account.*
 
-This front-loads: `form autofill Chrome extension`, `automatic form filler`, `fill out job applications`, `scholarship forms`, `web forms` — all primary and secondary search terms.
+Targets: "autofill extension" (5,400/mo), "autofill chrome extension" (2,900), "form filler" (9,900), "form filler chrome extension" (720); see `SEO/TETRAform SEO Audit.md`.
 
 ---
 
@@ -317,7 +317,7 @@ This front-loads: `form autofill Chrome extension`, `automatic form filler`, `fi
 
 These must appear in the landing page, the Chrome Web Store listing, and the screenshots.
 
-### Differentiator 1 — Privacy: Data Never Leaves Your Device
+### Differentiator 1 — Privacy: Your Profiles Stay on Your Device
 > *Unlike browser autofill or cloud-based tools, TETRAform stores everything locally on your computer. No account required. No cloud sync. No data sent anywhere.*
 
 **On landing page:** Dedicated Privacy section (Section 7), hero trust badges, footer tagline
@@ -358,7 +358,7 @@ Pre-cropped from Chrome Web Store images (right side only — product UI, no mar
 
 ### OG image (to create)
 Create `public/og-image.png` at 1200×630px for social sharing previews.
-Content: gradient background (cyan→blue) + TETRAform logo + headline "Fill any web form in under 5 seconds".
+Content: gradient background (cyan→blue) + TETRAform logo + headline "Fill repetitive forms in one click" (old image still says "under 5 seconds"; replace with the 1.3.7 screenshots, roadmap #16).
 Referenced in `<meta property="og:image">` already in the HTML.
 
 ---
