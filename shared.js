@@ -76,7 +76,7 @@ function footerHTML() {
           TETRAform
         </a>
         <p class="text-xs text-base-content/40 mt-1 max-w-xs">
-          Free form autofill Chrome extension. Your data never leaves your device.
+          Free form autofill Chrome extension. Your saved profiles stay on your device.
         </p>
       </div>
       <nav class="flex flex-wrap gap-x-6 gap-y-2" aria-label="Footer navigation">
@@ -86,6 +86,8 @@ function footerHTML() {
            class="text-sm text-base-content/50 hover:text-base-content transition-colors">Contact</a>
         <a href="privacy.html"
            class="text-sm text-base-content/50 hover:text-base-content transition-colors">Privacy Policy</a>
+        <button type="button" data-cc="show-preferencesModal"
+           class="text-sm text-base-content/50 hover:text-base-content transition-colors cursor-pointer">Cookie settings</button>
       </nav>
       <p class="text-xs text-base-content/30">&copy; <span id="year"></span> TETRAform. All rights reserved.</p>
     </div>
@@ -106,4 +108,69 @@ function renderShared(opts) {
   // Dynamic year
   const yearEl = document.getElementById('year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
+}
+
+/* ── Cookie consent (CookieConsent v3, loaded from jsDelivr in each page) ──
+   Google Analytics scripts in <head> are type="text/plain" data-category="analytics",
+   so they only run after the visitor accepts Analytics. Basic Consent Mode:
+   nothing is sent to Google before consent. */
+
+function initCookieConsent() {
+  if (!window.CookieConsent) return;
+  window.CookieConsent.run({
+    guiOptions: {
+      consentModal: { layout: 'box', position: 'bottom left', equalWeightButtons: true },
+      preferencesModal: { layout: 'box', equalWeightButtons: true }
+    },
+    categories: {
+      necessary: { enabled: true, readOnly: true },
+      analytics: {
+        autoClear: { cookies: [{ name: /^_ga/ }, { name: '_gid' }] }
+      }
+    },
+    language: {
+      default: 'en',
+      translations: {
+        en: {
+          consentModal: {
+            title: 'Cookies on tetraform.app',
+            description: 'We use Google Analytics to count visits to this website, only if you allow it. The TETRAform extension itself has no analytics.',
+            acceptAllBtn: 'Accept analytics',
+            acceptNecessaryBtn: 'Reject',
+            showPreferencesBtn: 'Choose',
+            footer: '<a href="privacy.html#website">Privacy Policy</a>'
+          },
+          preferencesModal: {
+            title: 'Cookie settings',
+            acceptAllBtn: 'Accept all',
+            acceptNecessaryBtn: 'Reject all',
+            savePreferencesBtn: 'Save choices',
+            closeIconLabel: 'Close',
+            sections: [
+              {
+                title: 'Strictly necessary',
+                description: 'Remembers your cookie choice. Always on.',
+                linkedCategory: 'necessary'
+              },
+              {
+                title: 'Analytics',
+                description: 'Google Analytics counts visits and shows which pages are useful. It sets cookies and receives standard browser information such as your IP address.',
+                linkedCategory: 'analytics'
+              },
+              {
+                title: 'More information',
+                description: 'See the <a href="privacy.html#website">Privacy Policy</a> or email <a href="mailto:contact@tetraform.app">contact@tetraform.app</a>.'
+              }
+            ]
+          }
+        }
+      }
+    }
+  });
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initCookieConsent);
+} else {
+  initCookieConsent();
 }

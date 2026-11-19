@@ -3,14 +3,27 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <!-- Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-4QP72N746Q"></script>
+  <!-- Google Analytics: blocked until the visitor accepts "Analytics" in the cookie banner (CookieConsent, shared.js) -->
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
+    gtag('consent', 'default', {
+      ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied',
+      analytics_storage: 'denied', functionality_storage: 'denied',
+      personalization_storage: 'denied', security_storage: 'granted'
+    });
+  </script>
+  <script type="text/plain" data-category="analytics" data-src="https://www.googletagmanager.com/gtag/js?id=G-4QP72N746Q" async></script>
+  <script type="text/plain" data-category="analytics">
+    gtag('consent', 'update', { analytics_storage: 'granted' });
     gtag('js', new Date());
     gtag('config', 'G-4QP72N746Q');
   </script>
+  <script type="text/plain" data-category="!analytics">
+    gtag('consent', 'update', { analytics_storage: 'denied' });
+  </script>
+  <!-- Cookie banner (CookieConsent v3, MIT) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@3.1.0/dist/cookieconsent.css" />
   <!-- ── SEO ─────────────────────────────────────────────── -->
   <title>Privacy Policy – TETRAform Form Autofill Chrome Extension</title>
   <meta name="description" content="Privacy Policy for TETRAform, the free form autofill Chrome extension. Your profiles stay on your device. No account, no tracking. Only the optional feedback form sends data." />
@@ -46,6 +59,21 @@
 
   <style>
     body { font-family: 'Inter', system-ui, -apple-system, sans-serif; }
+
+    /* Cookie banner (CookieConsent) matched to the corporate theme */
+    #cc-main {
+      --cc-font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      --cc-modal-border-radius: 0.5rem;
+      --cc-btn-border-radius: 0.25rem;
+      --cc-btn-primary-bg: var(--color-primary);
+      --cc-btn-primary-border-color: var(--color-primary);
+      --cc-btn-primary-hover-bg: var(--color-primary);
+      --cc-btn-primary-hover-border-color: var(--color-primary);
+      --cc-btn-primary-color: var(--color-primary-content);
+      --cc-btn-primary-hover-color: var(--color-primary-content);
+      --cc-toggle-on-bg: var(--color-primary);
+      --cc-link-color: var(--color-primary);
+    }
 
     /* Brand gradient — ONLY used on the header bar (matches HeaderBar.tsx) */
     .brand-gradient {
@@ -187,11 +215,11 @@
       </ul>
 
       <!-- Section 7 -->
-      <h2 class="text-xl font-bold mt-8 mb-3 flex items-center gap-2">
+      <h2 id="website" class="text-xl font-bold mt-8 mb-3 flex items-center gap-2 scroll-mt-32">
         <i data-lucide="globe" class="w-5 h-5 text-primary"></i>
         7. This website
       </h2>
-      <p>This policy covers the extension. The tetraform.app website is hosted on GitHub Pages and uses Google Analytics to count visits and see which pages are useful. Google Analytics may set cookies and receives standard browser information such as your IP address. It is not used inside the extension and is never linked to your profiles.</p>
+      <p>This policy covers the extension. The tetraform.app website is hosted on GitHub Pages. It uses Google Analytics to count visits and see which pages are useful, <strong>only if you accept analytics cookies</strong> in the cookie banner. Until then, the Google Analytics script does not load and nothing is sent to Google. When allowed, Google Analytics sets cookies and receives standard browser information such as your IP address. You can change your choice at any time with <strong>Cookie settings</strong> in the footer; rejecting removes the analytics cookies. Google Analytics is not used inside the extension and is never linked to your profiles.</p>
 
       <!-- Section 8 -->
       <h2 class="text-xl font-bold mt-8 mb-3 flex items-center gap-2">
@@ -224,6 +252,7 @@
   <div id="site-footer"></div>
 
   <!-- ── Scripts ──────────────────────────────────────────── -->
+  <script src="https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@3.1.0/dist/cookieconsent.umd.js"></script>
   <script src="shared.js"></script>
   <script src="https://unpkg.com/lucide@latest"></script>
   <script>
