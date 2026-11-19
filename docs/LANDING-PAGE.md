@@ -117,7 +117,7 @@ Set up in Cloudflare Email Routing:
 | Utility classes | Tailwind CSS v4 via CDN (`@tailwindcss/browser@4`) | No build step; CDN generates utilities on the fly |
 | Theme | DaisyUI `corporate` (light) | Identical to the extension's popup/settings UI |
 | Font | Inter via Google Fonts | Polish on marketing copy |
-| Icons | Lucide via CDN (`unpkg.com/lucide@latest`) | Consistent with extension (lucide-react) |
+| Icons | Lucide via CDN, pinned (`unpkg.com/lucide@0.544.0`) | Consistent with extension (lucide-react). Pinned because 1.x dropped brand icons such as `chrome` (19 Nov 2026) |
 | Hosting | GitHub Pages | Free, git-based, custom domain support |
 
 All dependencies are loaded from CDN — no `package.json`, no `npm install` required.
@@ -131,7 +131,7 @@ All dependencies are loaded from CDN — no `package.json`, no `npm install` req
 
 **Scripts before `</body>`:**
 ```html
-<script src="https://unpkg.com/lucide@latest"></script>
+<script src="https://unpkg.com/lucide@0.544.0/dist/umd/lucide.min.js"></script>
 <script>lucide.createIcons();</script>
 ```
 
