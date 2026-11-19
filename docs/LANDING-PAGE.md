@@ -440,3 +440,13 @@ Post in these subreddits (be a contributor, not an advertiser):
 | New page checklist | Copy the GA/consent `<head>` block, the `#cc-main` style, and the CookieConsent script tag | |
 
 Next: roadmap #37 tests Cloudflare Web Analytics (cookieless) alongside GA.
+
+## Copy source of truth (added 19 Nov 2026)
+
+| What | Where |
+|---|---|
+| Approved homepage, Web Store and directory copy | Claude Doc "TETRAform SEO copy drafts" (https://claude.ai/artifact/CfwhkpCuBQPNF8DpTKzcZQ) |
+| Keyword evidence | `SEO/TETRAform SEO Audit.md` (workspace) |
+| Claims rules | Never "100% private", "any web form", "in seconds", "encrypted", "the only"; say "your profiles stay on your device" |
+
+Applied 19 Nov 2026: title "Free Autofill Extension & Form Filler for Chrome | TETRAform", meta/OG/Twitter descriptions, JSON-LD description, hero eyebrow + H1 "Fill repetitive forms in one click", hero paragraph, comparison subtitle, Chrome column "Addresses only" / "Can sync to Google", privacy section heading "Your profiles stay on your device". Still pending approval: new FAQ (with FAQ schema), personas, screenshots.
