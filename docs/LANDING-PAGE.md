@@ -450,3 +450,17 @@ Next: roadmap #37 tests Cloudflare Web Analytics (cookieless) alongside GA.
 | Claims rules | Never "100% private", "any web form", "in seconds", "encrypted", "the only"; say "your profiles stay on your device" |
 
 Applied 19 Nov 2026: title "Free Autofill Extension & Form Filler for Chrome | TETRAform", meta/OG/Twitter descriptions, JSON-LD description, hero eyebrow + H1 "Fill repetitive forms in one click", hero paragraph, comparison subtitle, Chrome column "Addresses only" / "Can sync to Google", privacy section heading "Your profiles stay on your device". FAQ + FAQPage schema live 19 Nov 2026. Still to do: personas, screenshots.
+
+## Blog (roadmap #38)
+
+| Item | Detail |
+| --- | --- |
+| Pages | `blog/index.html` (list, newest first) and `blog/<slug>.html` per post. Plain static HTML, readable without JavaScript |
+| Template | Same head as `privacy.html` (consent banner, GA after consent, CDN styles) + `.post-body` typography CSS. Generated once from a script in Claude's scratchpad; edit the HTML directly after that |
+| Shared | `renderShared({ page: 'blog' })`; `shared.js` uses root paths (`/`, `/public/…`, `/blog/`, `/privacy.html`) so sub-folders work |
+| Structured data | `BlogPosting` + `BreadcrumbList` per post; `Blog` + `BreadcrumbList` on the list page |
+| Byline | "By the TETRAform team" (no personal name) |
+| Sitemap | One `<url>` per post, extensionless (`/blog/<slug>`) |
+| Adding a post | Copy an existing post, change title, meta, canonical, OG, JSON-LD, dates and body; add it to `blog/index.html` (card + `blogPost` list) and `sitemap.xml` |
+| Posts | 1. `tetraform-vs-chrome-autofill` (draft, 20 Nov 2026). Plan and keywords: roadmap "Blog plan" |
+
