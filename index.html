@@ -121,6 +121,71 @@
     }
   }
   </script>
+  <!-- FAQ structured data: must match the visible FAQ (source: SEO/TETRAform Copy.md) -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Does TETRAform work on every website?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It works with most standard web forms: text fields, dropdowns, radio buttons, checkboxes, text areas and forms embedded in a page. Some custom widgets, protected pages or very dynamic forms may need manual input. After a fill, the summary lists any fields left empty, so you can finish them and save them for next time. Always review a form before you submit it."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Where does TETRAform store my information?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Your profiles are stored in Chrome storage on your device and are never uploaded to TETRAform. The only data sent anywhere is what you type into the optional feedback form."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does it save passwords or payment-card details?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. TETRAform detects and skips passwords, card numbers, CVV codes, CAPTCHAs and one-time codes. Websites don't always label fields clearly, so review what you save and what gets filled."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I need an account?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Install TETRAform, create a profile, and start saving or filling forms."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do profiles help?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Each profile holds a different set of details, for example Job Applications, Student, Freelance and Personal. Start from a template, then link a profile to a website so it's chosen automatically there."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is TETRAform free?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. The Free plan includes 3 profiles and 15 form fills per day; saving and editing profiles is always unlimited. Pro, with unlimited profiles and fills, is coming soon."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I move my profiles to another computer?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Export your profiles and settings to a JSON file and import it on the other computer. Keep the file safe: it contains your saved details."
+      }
+    }
+  ]
+}
+  </script>
 </head>
 
 <body class="antialiased bg-base-100">
@@ -916,63 +981,57 @@
 
         <div class="collapse collapse-arrow bg-base-100 border border-base-200 shadow-sm">
           <input type="radio" name="faq" checked="checked" />
-          <div class="collapse-title font-semibold text-base">Is TETRAform really free?</div>
+          <h3 class="collapse-title font-semibold text-base">Does TETRAform work on every website?</h3>
           <div class="collapse-content text-base-content/60 leading-relaxed">
-            Yes — free to install and use. The free plan includes up to 3 profiles, 15 form fills
-            per day, and all core features. Only fills count: saving from pages and editing your
-            profiles are always unlimited. A Pro plan with unlimited fills and profiles is coming soon.
-            No credit card, no sign-up required.
+            It works with most standard web forms: text fields, dropdowns, radio buttons, checkboxes, text areas and forms embedded in a page. Some custom widgets, protected pages or very dynamic forms may need manual input. After a fill, the summary lists any fields left empty, so you can finish them and save them for next time. Always review a form before you submit it.
           </div>
         </div>
 
         <div class="collapse collapse-arrow bg-base-100 border border-base-200 shadow-sm">
           <input type="radio" name="faq" />
-          <div class="collapse-title font-semibold text-base">Is my data safe?</div>
+          <h3 class="collapse-title font-semibold text-base">Where does TETRAform store my information?</h3>
           <div class="collapse-content text-base-content/60 leading-relaxed">
-            Completely. All profile data is stored in your browser's local storage — it never
-            touches a server. No cloud sync, no account, no data collection.
-            TETRAform also automatically detects and blocks sensitive fields — passwords, credit card numbers,
-            CVVs, CAPTCHAs, and OTP codes are never saved, even if you click Save.
-            You can export or delete everything at any time.
+            Your profiles are stored in Chrome storage on your device and are never uploaded to TETRAform. The only data sent anywhere is what you type into the optional feedback form.
           </div>
         </div>
 
         <div class="collapse collapse-arrow bg-base-100 border border-base-200 shadow-sm">
           <input type="radio" name="faq" />
-          <div class="collapse-title font-semibold text-base">Does it work on all websites?</div>
+          <h3 class="collapse-title font-semibold text-base">Does it save passwords or payment-card details?</h3>
           <div class="collapse-content text-base-content/60 leading-relaxed">
-            TETRAform works on the vast majority of web forms — job boards like LinkedIn and Indeed,
-            scholarship portals, CRMs, contact forms, and more. You can also ignore specific
-            websites where you don't want the assistant to appear.
+            No. TETRAform detects and skips passwords, card numbers, CVV codes, CAPTCHAs and one-time codes. Websites don&#x27;t always label fields clearly, so review what you save and what gets filled.
           </div>
         </div>
 
         <div class="collapse collapse-arrow bg-base-100 border border-base-200 shadow-sm">
           <input type="radio" name="faq" />
-          <div class="collapse-title font-semibold text-base">How do profiles work?</div>
+          <h3 class="collapse-title font-semibold text-base">Do I need an account?</h3>
           <div class="collapse-content text-base-content/60 leading-relaxed">
-            Each profile stores a different set of information — e.g. "Job Applications", "School", "Personal".
-            You can add fields manually, or fill out any form once and press <strong>Save</strong> to capture all
-            the fields into your profile automatically. Next time you visit a similar form, just click Fill.
-            You can also link a profile to a website so it activates automatically when you visit.
+            No. Install TETRAform, create a profile, and start saving or filling forms.
           </div>
         </div>
 
         <div class="collapse collapse-arrow bg-base-100 border border-base-200 shadow-sm">
           <input type="radio" name="faq" />
-          <div class="collapse-title font-semibold text-base">Do I need to create an account?</div>
+          <h3 class="collapse-title font-semibold text-base">How do profiles help?</h3>
           <div class="collapse-content text-base-content/60 leading-relaxed">
-            No. Install TETRAform, create a profile, and save your data from any form you fill — or add it
-            manually. No email, no password, no sign-up. Your data lives in your browser — nowhere else.
+            Each profile holds a different set of details, for example Job Applications, Student, Freelance and Personal. Start from a template, then link a profile to a website so it&#x27;s chosen automatically there.
           </div>
         </div>
 
         <div class="collapse collapse-arrow bg-base-100 border border-base-200 shadow-sm">
           <input type="radio" name="faq" />
-          <div class="collapse-title font-semibold text-base">Can I transfer my data to a new computer?</div>
+          <h3 class="collapse-title font-semibold text-base">Is TETRAform free?</h3>
           <div class="collapse-content text-base-content/60 leading-relaxed">
-            Yes. Use the Backup &amp; Restore feature to export your profiles to a file.
-            Install TETRAform on your new machine and import — all your profiles are back instantly.
+            Yes. The Free plan includes 3 profiles and 15 form fills per day; saving and editing profiles is always unlimited. Pro, with unlimited profiles and fills, is coming soon.
+          </div>
+        </div>
+
+        <div class="collapse collapse-arrow bg-base-100 border border-base-200 shadow-sm">
+          <input type="radio" name="faq" />
+          <h3 class="collapse-title font-semibold text-base">Can I move my profiles to another computer?</h3>
+          <div class="collapse-content text-base-content/60 leading-relaxed">
+            Yes. Export your profiles and settings to a JSON file and import it on the other computer. Keep the file safe: it contains your saved details.
           </div>
         </div>
 

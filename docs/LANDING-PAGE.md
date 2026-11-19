@@ -196,7 +196,7 @@ CTA buttons use `data-lucide="chrome"` for the Chrome icon.
 | 9 | Features | `bg-section-alt` | 11-feature grid with Lucide icons (includes sensitive field protection, keyboard shortcuts) |
 | 10 | Privacy | `bg-base-100` | "Your profiles stay on your device" + badges (feedback form is the only data sent) |
 | 11 | Pricing | `bg-section-alt` | $0 free plan card (3 profiles, 15 form fills/day; saving and profile editing unlimited, matching extension v1.3.7) |
-| 12 | FAQ | `bg-base-100` | 6 collapse-arrow items (radio — one open at a time) |
+| 12 | FAQ | `bg-section-alt` | 7 collapse-arrow items (radio, one open at a time), questions as `<h3>`; `FAQPage` JSON-LD in `<head>` must match the visible text (source: `SEO/TETRAform Copy.md`) |
 | 13 | CTA | `bg-section-alt` | Card with `bg-primary text-primary-content` (solid, not gradient) |
 | 14 | Footer | `bg-base-200` | Logo + tagline, nav links, copyright (shared with privacy.html) |
 
@@ -449,4 +449,4 @@ Next: roadmap #37 tests Cloudflare Web Analytics (cookieless) alongside GA.
 | Keyword evidence | `SEO/TETRAform SEO Audit.md` (workspace) |
 | Claims rules | Never "100% private", "any web form", "in seconds", "encrypted", "the only"; say "your profiles stay on your device" |
 
-Applied 19 Nov 2026: title "Free Autofill Extension & Form Filler for Chrome | TETRAform", meta/OG/Twitter descriptions, JSON-LD description, hero eyebrow + H1 "Fill repetitive forms in one click", hero paragraph, comparison subtitle, Chrome column "Addresses only" / "Can sync to Google", privacy section heading "Your profiles stay on your device". Still pending approval: new FAQ (with FAQ schema), personas, screenshots.
+Applied 19 Nov 2026: title "Free Autofill Extension & Form Filler for Chrome | TETRAform", meta/OG/Twitter descriptions, JSON-LD description, hero eyebrow + H1 "Fill repetitive forms in one click", hero paragraph, comparison subtitle, Chrome column "Addresses only" / "Can sync to Google", privacy section heading "Your profiles stay on your device". FAQ + FAQPage schema live 19 Nov 2026. Still to do: personas, screenshots.
