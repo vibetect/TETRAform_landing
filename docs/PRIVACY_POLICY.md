@@ -57,7 +57,14 @@ Saved profiles are never included. Processors (HTTPS):
 - **Cloudflare (Workers and Email)**: forwards a copy to our inbox; briefly processes your IP address to block spam; we do not store it.
 - **Our email provider**: holds the forwarded copy.
 
-Kept only as long as needed to respond and improve TETRAform. Deletion on request: contact@tetraform.app.
+Kept only as long as needed to respond and improve TETRAform.
+
+**How to delete your feedback**
+1. Email contact@tetraform.app with the subject **"Delete my feedback"**.
+2. Send it from the email address entered in the feedback form; that address is how we find the submissions.
+3. We delete them from Firestore and the inbox, and confirm by reply.
+
+The email field is optional. Feedback sent without an email can't be matched to the requester, so it can't be found to delete. (The extension's feedback form shows this note under the email field.)
 
 ## 4. Permissions
 - `storage`: save profiles and settings on your device.
@@ -70,7 +77,7 @@ No selling, renting or transfer, except the processors in section 3. No advertis
 ## 6. Your choices
 - Delete profiles in settings, or remove the extension to erase all local data.
 - Send feedback without an email, or not at all.
-- Email us to access or delete your feedback.
+- Access or delete feedback: follow the steps in section 3.
 
 ## 7. This website
 tetraform.app is hosted on GitHub Pages and uses Google Analytics to count visits. GA may set cookies and receives standard browser info such as IP address. Not used in the extension; never linked to profiles.
