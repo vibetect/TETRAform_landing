@@ -1,40 +1,86 @@
 # Privacy Policy for TETRAform
 
-**Last Updated:** December 11, 2025
+**Last updated:** November 19, 2026
+**Source of truth.** The live page is `privacy.html` (https://tetraform.app/privacy). Keep this file, `privacy.html` and `TETRAform_local/docs/PRIVACY_POLICY.md` identical in substance.
 
-TETRAform ("we", "our", or "us") is committed to protecting your privacy. This Privacy Policy explains how your information is collected, used, and disclosed by the TETRAform Chrome Extension.
+## Data flow map (for maintainers)
 
-## 1. Information Collection and Use
+| Data | Where it lives | Leaves device? | Code |
+|---|---|---|---|
+| Profiles, custom fields, groups | `chrome.storage.local` | Never | `src/lib/storage.ts` |
+| Settings, denied domains, domain profiles | `chrome.storage.local` | Never | `src/lib/storage.ts` |
+| Daily fill counter | `chrome.storage.local` | Never | `src/lib/storage.ts` |
+| Feedback (type, message, optional email, version, tier, user agent, platform, language) | Firestore `feedback_submissions` (create-only rules) + email via Cloudflare Worker | Only when the user presses Send | `src/components/ContactForm.tsx`, `src/lib/firebase.ts`, `src/background.ts`, `cloudflare/tetraform-feedback-worker.js` |
+| IP address | Cloudflare rate limiter (transient, not stored by us) | With feedback request | Worker |
+| Website visits | Google Analytics (tetraform.app only) | Website only | `index.html`, `privacy.html` |
 
-### Local Storage
-TETRAform is designed with a "privacy-first" approach. The primary function of the extension is to save and autofill form data.
-*   **All profile data**, including names, addresses, emails, and phone numbers, is stored **locally on your device** using Chrome's secure storage API (`chrome.storage.local`).
-*   This data **never leaves your computer** under normal operation of the core autofill features. We do not have access to your saved profiles.
+Not used: accounts/sign-in (`AuthScreen.tsx` is not mounted), extension analytics, ads, remote code.
+**Any change to this table needs a policy update and a Web Store privacy-tab review** (`TETRAform_local/docs/CHROME_STORE_ANSWERS.md`).
 
-### External Services (Firebase)
-We use Google Firebase for specific, optional features:
-1.  **Authentication**: If you create an account to sync settings or access premium features, your email and authentication credentials are securely managed by Firebase Authentication.
-2.  **Feedback Submission**: If you use the "Send Feedback" form within the extension, the message and your email (if provided) are sent to our database hosted on Cloud Firestore.
-3.  **Analytics (Optional)**: We may collect anonymous usage data (e.g., number of profiles created, daily usage counts) to improve the extension. This data is not linked to your personal profile information.
+---
 
-## 2. Permissions
+TETRAform ("we", "our", "us") is a Chrome extension that fills web forms from profiles you save. This policy explains what data the extension handles, where it goes, and the choices you have.
 
-TETRAform requires specific permissions to function:
+**The short version**
+- Your profiles, fields and settings are stored **only on your device**. We cannot see them.
+- There is **no account**, no tracking and no analytics inside the extension.
+- Data leaves your device only when **you send the optional feedback form**. Details are in section 3.
+- We never sell your data or use it for advertising.
 
-*   **`storage`**: To save your profiles locally on your device.
-*   **`activeTab`** & **`scripting`**: To detect forms on the page you are visiting and insert the autofill data when you request it.
-*   **`host_permissions` (<all_urls>)**: TETRAform is a general-purpose form filler. It needs to be able to run on any website where you might encounter a form. We do not track your browsing history. The extension only activates its script when it detects a form or when you manually trigger it.
+## 1. Data stored on your device
+Saved with `chrome.storage.local`, never sent to us or anyone else:
+- **Profiles**: name, email, phone, address, work history and any custom fields you create.
+- **Settings**: active profile, domain-specific profiles, sites where TETRAform is off, display preferences.
+- **Daily fill counter**: a number used for the Free plan limit.
 
-## 3. Data Security
+JSON backups are saved where you choose. We never receive them.
 
-*   We prioritize the security of your data. Local data is sandboxed by the Chrome browser.
-*   Network communications for feedback or authentication are encrypted using industry-standard HTTPS/TLS protocols.
-*   **Sensitive Data**: We explicitly **block** the saving of highly sensitive fields such as Credit Card numbers (CVV), passwords, and CAPTCHA codes to prevent accidental storage of critical secrets.
+## 2. What we never collect
+- Passwords, card numbers, CVV codes, CAPTCHA answers and one-time codes (blocked, never saved).
+- Browsing history or the pages you visit.
+- The contents of forms you fill (pages are read on-device only).
+- Usage analytics, advertising IDs or tracking cookies inside the extension.
 
-## 4. Updates to This Policy
+## 3. The optional feedback form
+The only feature that sends data off your device, and only when you press Send.
 
-We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the "Last Updated" date.
+| Data | Why |
+|---|---|
+| Feedback type and message | To read and act on your feedback |
+| Email address (optional) | Only to reply to you |
+| Extension version and plan | To reproduce and fix bugs |
+| Browser user agent, platform, language | To reproduce and fix bugs |
+| Time of submission | To answer requests in order |
 
-## 5. Contact Us
+Saved profiles are never included. Processors (HTTPS):
+- **Google Firebase (Cloud Firestore)**: stores the submission in a private database.
+- **Cloudflare (Workers and Email)**: forwards a copy to our inbox; briefly processes your IP address to block spam; we do not store it.
+- **Our email provider**: holds the forwarded copy.
 
-If you have any questions about this Privacy Policy, please contact us at [contact@tetraform.app](mailto:contact@tetraform.app) or via the feedback form in the extension settings.
+Kept only as long as needed to respond and improve TETRAform. Deletion on request: contact@tetraform.app.
+
+## 4. Permissions
+- `storage`: save profiles and settings on your device.
+- `activeTab` and `scripting`: fill the form on the current page when you ask.
+- `<all_urls>`: check pages for form fields to show the Assistant Bar, on-device. We do not record sites you visit.
+
+## 5. Sharing and Limited Use
+No selling, renting or transfer, except the processors in section 3. No advertising, credit decisions or unrelated uses. TETRAform's use of user data complies with the Chrome Web Store User Data Policy, including the Limited Use requirements.
+
+## 6. Your choices
+- Delete profiles in settings, or remove the extension to erase all local data.
+- Send feedback without an email, or not at all.
+- Email us to access or delete your feedback.
+
+## 7. This website
+tetraform.app is hosted on GitHub Pages and uses Google Analytics to count visits. GA may set cookies and receives standard browser info such as IP address. Not used in the extension; never linked to profiles.
+
+## 8. Security
+- Local data sits in Chrome's extension storage, separate from websites.
+- Feedback is sent over HTTPS; Firestore rules block all client reads.
+
+## 9. Changes
+We update this page and its date before any data-handling change ships. Features that would send profile data off-device (e.g. planned Pro cloud sync) will be opt-in and described here first.
+
+## 10. Contact
+contact@tetraform.app, or the feedback form in the extension settings.
