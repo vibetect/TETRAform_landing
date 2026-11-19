@@ -3,7 +3,7 @@
 **Last updated:** March 2026
 **Repo:** `github.com/vibetect/TETRAform_landing`
 **Live URL:** `https://tetraform.app`
-**Chrome Web Store:** `https://chromewebstore.google.com/detail/tetraform-smart-form-auto/acgapenhjikhpeicknacehlkalpemigb`
+**Chrome Web Store:** `https://chromewebstore.google.com/detail/form-autofill-filler-tetr/acgapenhjikhpeicknacehlkalpemigb`
 
 ---
 

@@ -1,16 +1,17 @@
 /**
  * Shared header & footer for TETRAform landing page.
- * Both index.html and privacy.html source this file.
+ * index.html, privacy.html and every blog/ page source this file.
+ * Paths are root-absolute (/...) so pages in sub-folders (blog/) work.
  *
  * Usage:
  *   <div id="site-header"></div>   ← at top of <body>
  *   <div id="site-footer"></div>   ← at bottom, before scripts
- *   <script src="shared.js"></script>
- *   <script>renderShared({ page: 'home' });</script>   // or 'privacy'
+ *   <script src="/shared.js"></script>
+ *   <script>renderShared({ page: 'home' });</script>   // or 'privacy', 'blog'
  */
 
 const STORE_URL =
-  'https://chromewebstore.google.com/detail/tetraform-smart-form-auto/acgapenhjikhpeicknacehlkalpemigb';
+  'https://chromewebstore.google.com/detail/form-autofill-filler-tetr/acgapenhjikhpeicknacehlkalpemigb';
 
 /* ── Header ─────────────────────────────────────────────── */
 
@@ -25,7 +26,8 @@ function headerHTML(page) {
        <a href="#comparison" class="px-2 py-1 hover:bg-white/20 rounded-lg transition-colors text-white text-xs whitespace-nowrap">COMPARE</a>
        <a href="#features" class="px-2 py-1 hover:bg-white/20 rounded-lg transition-colors text-white text-xs whitespace-nowrap">FEATURES</a>
        <a href="#pricing" class="px-2 py-1 hover:bg-white/20 rounded-lg transition-colors text-white text-xs whitespace-nowrap">PRICING</a>
-       <a href="#faq" class="px-2 py-1 hover:bg-white/20 rounded-lg transition-colors text-white text-xs whitespace-nowrap">FAQ</a>`;
+       <a href="#faq" class="px-2 py-1 hover:bg-white/20 rounded-lg transition-colors text-white text-xs whitespace-nowrap">FAQ</a>
+       <a href="/blog/" class="px-2 py-1 hover:bg-white/20 rounded-lg transition-colors text-white text-xs whitespace-nowrap">BLOG</a>`;
 
   const mobileLinks = `<li><a href="#how-it-works">HOW IT WORKS</a></li>
        <li><a href="#the-problem">PROBLEM</a></li>
@@ -35,6 +37,7 @@ function headerHTML(page) {
        <li><a href="#features">FEATURES</a></li>
        <li><a href="#pricing">PRICING</a></li>
        <li><a href="#faq">FAQ</a></li>
+       <li><a href="/blog/">BLOG</a></li>
        <li><a href="${STORE_URL}" target="_blank" rel="noopener noreferrer">Add to Chrome</a></li>`;
 
   // On non-home pages, hide the nav entirely (same header, just no menu)
@@ -52,8 +55,8 @@ function headerHTML(page) {
 
   return `<header class="brand-gradient">
     <div class="max-w-6xl mx-auto h-[100px] flex items-center px-6">
-      <a href="index.html" class="flex items-center gap-4">
-        <img src="public/tetraform-logo.png" alt="TETRAform" class="w-16 h-16 rounded-xl" />
+      <a href="/" class="flex items-center gap-4">
+        <img src="/public/tetraform-logo.png" alt="TETRAform" class="w-16 h-16 rounded-xl" />
         <div class="flex flex-col justify-center">
           <span class="text-2xl font-bold text-white leading-tight">TETRAform</span>
           <span class="text-sm text-white leading-tight">Smart Form Assistant</span>
@@ -71,8 +74,8 @@ function footerHTML() {
   return `<footer class="bg-section-alt border-t border-base-200 px-4 py-10">
     <div class="max-w-5xl mx-auto flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
       <div class="flex flex-col gap-1">
-        <a href="index.html" class="flex items-center gap-2 font-bold text-base hover:opacity-80 transition-opacity">
-          <img src="public/icon48.png" alt="TETRAform" class="w-6 h-6 rounded" />
+        <a href="/" class="flex items-center gap-2 font-bold text-base hover:opacity-80 transition-opacity">
+          <img src="/public/icon48.png" alt="TETRAform" class="w-6 h-6 rounded" />
           TETRAform
         </a>
         <p class="text-xs text-base-content/40 mt-1 max-w-xs">
@@ -84,7 +87,9 @@ function footerHTML() {
            class="text-sm text-base-content/50 hover:text-base-content transition-colors">Chrome Web Store</a>
         <a href="mailto:contact@tetraform.app"
            class="text-sm text-base-content/50 hover:text-base-content transition-colors">Contact</a>
-        <a href="privacy.html"
+        <a href="/blog/"
+           class="text-sm text-base-content/50 hover:text-base-content transition-colors">Blog</a>
+        <a href="/privacy.html"
            class="text-sm text-base-content/50 hover:text-base-content transition-colors">Privacy Policy</a>
         <button type="button" data-cc="show-preferencesModal"
            class="text-sm text-base-content/50 hover:text-base-content transition-colors cursor-pointer">Cookie settings</button>
@@ -138,7 +143,7 @@ function initCookieConsent() {
             acceptAllBtn: 'Accept analytics',
             acceptNecessaryBtn: 'Reject',
             showPreferencesBtn: 'Choose',
-            footer: '<a href="privacy.html#website">Privacy Policy</a>'
+            footer: '<a href="/privacy.html#website">Privacy Policy</a>'
           },
           preferencesModal: {
             title: 'Cookie settings',
@@ -159,7 +164,7 @@ function initCookieConsent() {
               },
               {
                 title: 'More information',
-                description: 'See the <a href="privacy.html#website">Privacy Policy</a> or email <a href="mailto:contact@tetraform.app">contact@tetraform.app</a>.'
+                description: 'See the <a href="/privacy.html#website">Privacy Policy</a> or email <a href="mailto:contact@tetraform.app">contact@tetraform.app</a>.'
               }
             ]
           }

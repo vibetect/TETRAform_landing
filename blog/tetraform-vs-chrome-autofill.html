@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="corporate" style="scroll-behavior: smooth;">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Google Analytics: blocked until the visitor accepts "Analytics" in the cookie banner (CookieConsent, shared.js) -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('consent', 'default', {
+      ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied',
+      analytics_storage: 'denied', functionality_storage: 'denied',
+      personalization_storage: 'denied', security_storage: 'granted'
+    });
+  </script>
+  <script type="text/plain" data-category="analytics" data-src="https://www.googletagmanager.com/gtag/js?id=G-4QP72N746Q" async></script>
+  <script type="text/plain" data-category="analytics">
+    gtag('consent', 'update', { analytics_storage: 'granted' });
+    gtag('js', new Date());
+    gtag('config', 'G-4QP72N746Q');
+  </script>
+  <script type="text/plain" data-category="!analytics">
+    gtag('consent', 'update', { analytics_storage: 'denied' });
+  </script>
+  <!-- Cookie banner (CookieConsent v3, MIT) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@3.1.0/dist/cookieconsent.css" />
+  <!-- ── SEO ─────────────────────────────────────────────── -->
+  <title>TETRAform vs Chrome Autofill: Form Filler Chrome Extension Compared</title>
+  <meta name="description" content="Chrome autofill fills addresses, cards and passwords. The TETRAform autofill Chrome extension adds named profiles, custom fields and per-site profiles, stored on your device. Here is when to use each." />
+  <link rel="canonical" href="https://tetraform.app/blog/tetraform-vs-chrome-autofill" />
+
+  <!-- ── Open Graph ───────────────────────────────────────── -->
+  <meta property="og:type"        content="article" />
+  <meta property="og:url"         content="https://tetraform.app/blog/tetraform-vs-chrome-autofill" />
+  <meta property="og:title"       content="TETRAform vs Chrome Autofill: Form Filler Chrome Extension Compared" />
+  <meta property="og:description" content="Chrome autofill fills addresses, cards and passwords. The TETRAform autofill Chrome extension adds named profiles, custom fields and per-site profiles, stored on your device. Here is when to use each." />
+  <meta property="og:image"       content="https://tetraform.app/public/og-image.png" />
+
+  <!-- ── Twitter Card ─────────────────────────────────────── -->
+  <meta name="twitter:card"        content="summary_large_image" />
+  <meta name="twitter:title"       content="TETRAform vs Chrome Autofill: Form Filler Chrome Extension Compared" />
+  <meta name="twitter:description" content="Chrome autofill fills addresses, cards and passwords. The TETRAform autofill Chrome extension adds named profiles, custom fields and per-site profiles, stored on your device. Here is when to use each." />
+  <meta name="twitter:image"       content="https://tetraform.app/public/og-image.png" />
+
+  <!-- ── Structured data ──────────────────────────────────── -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "TETRAform Autofill Extension vs Chrome Autofill: Multiple Profiles, Custom Fields, Stored Locally",
+  "description": "Chrome autofill fills addresses, cards and passwords. The TETRAform autofill Chrome extension adds named profiles, custom fields and per-site profiles, stored on your device. Here is when to use each.",
+  "datePublished": "2026-11-20",
+  "dateModified": "2026-11-20",
+  "author": {
+    "@type": "Organization",
+    "name": "TETRAform",
+    "url": "https://tetraform.app/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "TETRAform",
+    "url": "https://tetraform.app/",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://tetraform.app/public/icon128.png"
+    }
+  },
+  "image": "https://tetraform.app/public/og-image.png",
+  "mainEntityOfPage": "https://tetraform.app/blog/tetraform-vs-chrome-autofill",
+  "about": {
+    "@type": "SoftwareApplication",
+    "name": "TETRAform",
+    "applicationCategory": "BrowserApplication",
+    "operatingSystem": "Chrome"
+  }
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://tetraform.app/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Blog",
+      "item": "https://tetraform.app/blog/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "TETRAform vs Chrome Autofill",
+      "item": "https://tetraform.app/blog/tetraform-vs-chrome-autofill"
+    }
+  ]
+}
+  </script>
+
+  <!-- ── Icons ────────────────────────────────────────────── -->
+  <link rel="icon" type="image/png" sizes="128x128" href="/public/icon128.png" />
+  <link rel="icon" type="image/png" sizes="48x48"   href="/public/icon48.png" />
+  <link rel="icon" type="image/png" sizes="16x16"   href="/public/icon16.png" />
+
+  <!-- ── Fonts ───────────────────────────────────────────── -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- ── DaisyUI v5 + Tailwind v4 CDN (no build step) ───── -->
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@5/themes.css" rel="stylesheet" type="text/css" />
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+  <style>
+    body { font-family: 'Inter', system-ui, -apple-system, sans-serif; }
+
+    /* Cookie banner (CookieConsent) matched to the corporate theme */
+    #cc-main {
+      --cc-font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      --cc-modal-border-radius: 0.5rem;
+      --cc-btn-border-radius: 0.25rem;
+      --cc-btn-primary-bg: var(--color-primary);
+      --cc-btn-primary-border-color: var(--color-primary);
+      --cc-btn-primary-hover-bg: var(--color-primary);
+      --cc-btn-primary-hover-border-color: var(--color-primary);
+      --cc-btn-primary-color: var(--color-primary-content);
+      --cc-btn-primary-hover-color: var(--color-primary-content);
+      --cc-toggle-on-bg: var(--color-primary);
+      --cc-link-color: var(--color-primary);
+    }
+
+    /* Brand gradient — ONLY used on the header bar (matches HeaderBar.tsx) */
+    .brand-gradient {
+      background-image: linear-gradient(to right, #06b6d4, #2563eb);
+      background-color: #06b6d4;
+    }
+
+    /* Alternating section background — lighter than base-200 */
+    .bg-section-alt { background-color: oklch(96.5% 0 0); }
+
+    /* Blog article typography (no typography plugin on the CDN build) */
+    .post-body { font-size: 1.0625rem; line-height: 1.75; color: oklch(30% 0 0); }
+    .post-body h2 { font-size: 1.5rem; font-weight: 700; margin: 2.5rem 0 0.75rem; color: oklch(20% 0 0); line-height: 1.3; }
+    .post-body h3 { font-size: 1.2rem; font-weight: 600; margin: 1.75rem 0 0.5rem; color: oklch(20% 0 0); }
+    .post-body p { margin: 0 0 1rem; }
+    .post-body ul, .post-body ol { margin: 0 0 1rem 1.5rem; }
+    .post-body ul { list-style: disc; } .post-body ol { list-style: decimal; }
+    .post-body li { margin: 0.25rem 0; }
+    .post-body a { color: var(--color-primary); text-decoration: underline; text-underline-offset: 2px; }
+    .post-body table { width: 100%; border-collapse: collapse; margin: 1rem 0 1.5rem; font-size: 0.95rem; }
+    .post-body th, .post-body td { border: 1px solid oklch(90% 0 0); padding: 0.5rem 0.75rem; text-align: left; vertical-align: top; }
+    .post-body th { background: oklch(96.5% 0 0); font-weight: 600; }
+    .post-body .table-wrap { overflow-x: auto; }
+  </style>
+</head>
+
+<body class="antialiased bg-base-100">
+
+  <!-- Header injected by shared.js (sticky) -->
+  <div id="site-header" class="sticky top-0 z-50"></div>
+
+  <section class="border-b border-base-200 py-12 px-4">
+    <div class="max-w-3xl mx-auto">
+      <nav aria-label="Breadcrumb" class="text-sm text-base-content/60 mb-4"><a href="/" class="hover:underline">Home</a> <span aria-hidden="true">/</span> <a href="/blog/" class="hover:underline">Blog</a></nav>
+      <h1 class="text-3xl lg:text-4xl font-bold text-base-content mb-3 leading-tight">TETRAform Autofill Extension vs Chrome Autofill: Multiple Profiles, Custom Fields, Stored Locally</h1>
+      <p class="text-base-content/60 text-sm">By the TETRAform team · Published <time datetime="2026-11-20">November 20, 2026</time></p>
+    </div>
+  </section>
+
+  <main class="px-4 sm:px-8 pt-8 pb-12">
+    <article class="max-w-3xl mx-auto post-body">
+
+      <p>Chrome already fills forms for you. It remembers your addresses, payment cards and passwords, and it is a good choice for checkout pages and sign-ins. So why install a form filler Chrome extension at all?</p>
+      <p>Because a lot of forms ask for things Chrome doesn't keep: your LinkedIn URL, notice period, salary expectations, student ID, VAT number, or a short answer you have typed twenty times. This guide compares Chrome autofill with TETRAform, a free autofill Chrome extension, and shows where each one fits.</p>
+
+      <h2>The short answer</h2>
+      <ul>
+        <li><strong>Use Chrome autofill</strong> for addresses, payment cards and passwords. It is built in and works well on checkout and sign-in pages.</li>
+        <li><strong>Add TETRAform</strong> when you fill the same longer forms again and again: job applications, scholarship or school forms, client and supplier forms. You save whole profiles, with any fields you choose, and fill them in one click.</li>
+        <li>The two work side by side. TETRAform never saves passwords or card details, so Chrome keeps that job.</li>
+      </ul>
+
+      <h2>What Chrome autofill does well</h2>
+      <p>According to <a href="https://support.google.com/chrome/answer/142893" target="_blank" rel="noopener">Google's Chrome help page</a>, Chrome can fill names, passwords, addresses and payment details, and it groups saved information into passwords, payments, contact info, identity documents and travel. You can save several addresses and pick one from the dropdown. If you are signed in to Chrome, your saved details also appear on your other signed-in devices.</p>
+      <p>For everyday shopping and logins, that is often all you need.</p>
+
+      <h2>Where Chrome autofill stops</h2>
+      <p>Chrome fills the types of information it knows about. Many real forms go further:</p>
+      <ul>
+        <li><strong>Job applications:</strong> LinkedIn and portfolio links, current job title, years of experience, notice period, salary expectations, work authorisation.</li>
+        <li><strong>School and scholarship forms:</strong> student ID, university, degree, graduation date, short personal answers.</li>
+        <li><strong>Business forms:</strong> company name, VAT or tax number, IBAN, website, a standard description of your services.</li>
+      </ul>
+      <p>Chrome also doesn't let you choose which details belong together. Your work email, your personal email and your job-hunting details all sit in the same place, and you pick each field from a dropdown.</p>
+
+      <h2>What TETRAform adds</h2>
+
+      <h3>Named profiles that cover the whole form</h3>
+      <p>Create a profile for each part of your life, for example <em>Job Applications</em>, <em>Student</em>, <em>Freelance</em> or <em>Personal</em>. Each profile holds its own set of fields, not just an address. You can even keep a profile in a second language for forms in that language. Pick a profile, press Fill, and TETRAform fills every field it recognises from that profile.</p>
+
+      <h3>You choose what to save</h3>
+      <p>Fill in a form once, press Save, and TETRAform saves the fields from that page into your current profile. You decide which forms to save from, and you can rename, move or delete any field afterwards. Chrome, by contrast, offers to save the types of information it supports.</p>
+
+      <h3>Custom fields and groups</h3>
+      <p>Add any field you need, such as "Notice period" or "Why do you want this job?", and organise fields into groups like Contact, Address, Work, Education or your own. Move a field to another group whenever you like.</p>
+
+      <h3>The right profile on each site</h3>
+      <p>Link a profile to a website and TETRAform picks it automatically there: your job-search profile on a careers site, your business profile on a supplier portal. You can also turn TETRAform off completely on sites where you don't want it.</p>
+
+      <h3>Stored on your device, no account</h3>
+      <p>Your TETRAform profiles are saved in Chrome storage on your device and are never uploaded to TETRAform. There is no account to create. If you want to move to another computer, export your profiles to a JSON file and import it there. Keep that file safe, because it contains your saved details. The <a href="/privacy.html">privacy policy</a> explains exactly what is stored and the one case where data leaves your device (the optional feedback form).</p>
+      <p>This is a different approach from Chrome's newer AI features. In October 2026 Google announced that Chrome's <a href="https://blog.google/products-and-platforms/products/chrome/enhanced-autofill-gmail/" target="_blank" rel="noopener">enhanced autofill</a> can suggest details from your Gmail, such as order numbers or flight details, using Gemini. It is rolling out in the US for adults who opt in. Some people will love that. Others prefer their form data to stay in their own browser.</p>
+
+      <h3>Sensitive fields are skipped</h3>
+      <p>TETRAform detects and skips passwords, card numbers, CVV codes, CAPTCHAs and one-time codes. Websites don't always label fields clearly, so review what you save and what gets filled.</p>
+
+      <h2>Side by side</h2>
+      <div class="table-wrap">
+      <table>
+        <thead><tr><th></th><th>Chrome autofill</th><th>TETRAform</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Addresses and contact details</th><td>Yes, several addresses</td><td>Yes, inside each profile</td></tr>
+          <tr><th scope="row">Passwords and payment cards</th><td>Yes</td><td>No, skipped on purpose</td></tr>
+          <tr><th scope="row">Your own custom fields</th><td>No</td><td>Yes, plus custom groups</td></tr>
+          <tr><th scope="row">Named profiles (Work, Student, Personal…)</th><td>No</td><td>Yes: 3 on the Free plan</td></tr>
+          <tr><th scope="row">Default profile per website</th><td>No</td><td>Yes</td></tr>
+          <tr><th scope="row">Turn off on chosen sites</th><td>No per-site switch</td><td>Yes</td></tr>
+          <tr><th scope="row">Where data is kept</th><td>Your Google Account when signed in (syncs across devices)</td><td>On your device only; JSON export to move it</td></tr>
+          <tr><th scope="row">Account needed</th><td>Optional (Google Account for sync)</td><td>No</td></tr>
+          <tr><th scope="row">Price</th><td>Free, built in</td><td>Free: 3 profiles, 15 form fills per day. Pro coming soon.</td></tr>
+        </tbody>
+      </table>
+      </div>
+      <p class="text-sm text-base-content/60">Chrome details checked against Google's help page on November 20, 2026. Features can vary by region and version.</p>
+
+      <h2>When Chrome autofill is the better fit</h2>
+      <ul>
+        <li>You mostly fill checkout and sign-in forms.</li>
+        <li>You want your details on every device through your Google Account.</li>
+        <li>You don't want to install an extension.</li>
+      </ul>
+
+      <h2>What about Chrome profiles?</h2>
+      <p>Some people create separate Chrome profiles (for example Work and Personal) to keep different autofill details apart. That works, but each Chrome profile is a whole separate browser, with its own bookmarks, history, tabs and logins. TETRAform profiles only hold form details, so you can switch from your job-search profile to your personal one on the same page, in the same window.</p>
+
+      <h2>How to get started with TETRAform</h2>
+      <ol>
+        <li><a href="https://chromewebstore.google.com/detail/form-autofill-filler-tetr/acgapenhjikhpeicknacehlkalpemigb" target="_blank" rel="noopener noreferrer">Add TETRAform to Chrome</a> from the Chrome Web Store.</li>
+        <li>Create a profile, for example Job Applications.</li>
+        <li>Fill in a form you use often, then press <strong>Save</strong> in the Assistant Bar (or Ctrl+Shift+S).</li>
+        <li>Next time, open a similar form and press <strong>Fill</strong> (or Ctrl+Shift+F). Check the form, then submit it.</li>
+      </ol>
+      <p>Want the details? See <a href="/#how-it-works">how TETRAform works</a>, the <a href="/#comparison">full comparison</a> and the <a href="/#faq">FAQ</a>.</p>
+
+      <div class="not-prose rounded-box border border-base-200 shadow-sm bg-section-alt p-6 my-10 text-center">
+        <p class="text-lg font-semibold mb-1">Try TETRAform free</p>
+        <p class="text-base-content/60 text-sm mb-4">Free plan: 3 profiles and 15 form fills per day. No account needed.</p>
+        <a href="https://chromewebstore.google.com/detail/form-autofill-filler-tetr/acgapenhjikhpeicknacehlkalpemigb" target="_blank" rel="noopener noreferrer" class="btn btn-primary gap-2">
+          <i data-lucide="chrome" class="w-5 h-5" aria-hidden="true"></i> Add to Chrome, it's free
+        </a>
+      </div>
+
+    </article>
+  </main>
+
+  <!-- Footer injected by shared.js -->
+  <div id="site-footer"></div>
+
+  <!-- ── Scripts ──────────────────────────────────────────── -->
+  <script src="https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@3.1.0/dist/cookieconsent.umd.js"></script>
+  <script src="/shared.js"></script>
+  <script src="https://unpkg.com/lucide@0.544.0/dist/umd/lucide.min.js"></script>
+  <script>
+    renderShared({ page: 'blog' });
+    lucide.createIcons();
+  </script>
+
+</body>
+</html>
