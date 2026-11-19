@@ -3,14 +3,27 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <!-- Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-4QP72N746Q"></script>
+  <!-- Google Analytics: blocked until the visitor accepts "Analytics" in the cookie banner (CookieConsent, shared.js) -->
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
+    gtag('consent', 'default', {
+      ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied',
+      analytics_storage: 'denied', functionality_storage: 'denied',
+      personalization_storage: 'denied', security_storage: 'granted'
+    });
+  </script>
+  <script type="text/plain" data-category="analytics" data-src="https://www.googletagmanager.com/gtag/js?id=G-4QP72N746Q" async></script>
+  <script type="text/plain" data-category="analytics">
+    gtag('consent', 'update', { analytics_storage: 'granted' });
     gtag('js', new Date());
     gtag('config', 'G-4QP72N746Q');
   </script>
+  <script type="text/plain" data-category="!analytics">
+    gtag('consent', 'update', { analytics_storage: 'denied' });
+  </script>
+  <!-- Cookie banner (CookieConsent v3, MIT) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@3.1.0/dist/cookieconsent.css" />
 
   <!-- ── SEO ─────────────────────────────────────────────── -->
   <title>TETRAform – Free Form Autofill Chrome Extension</title>
@@ -49,6 +62,21 @@
 
   <style>
     body { font-family: 'Inter', system-ui, -apple-system, sans-serif; }
+
+    /* Cookie banner (CookieConsent) matched to the corporate theme */
+    #cc-main {
+      --cc-font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      --cc-modal-border-radius: 0.5rem;
+      --cc-btn-border-radius: 0.25rem;
+      --cc-btn-primary-bg: var(--color-primary);
+      --cc-btn-primary-border-color: var(--color-primary);
+      --cc-btn-primary-hover-bg: var(--color-primary);
+      --cc-btn-primary-hover-border-color: var(--color-primary);
+      --cc-btn-primary-color: var(--color-primary-content);
+      --cc-btn-primary-hover-color: var(--color-primary-content);
+      --cc-toggle-on-bg: var(--color-primary);
+      --cc-link-color: var(--color-primary);
+    }
 
     /* Brand gradient — ONLY used on the header bar (matches HeaderBar.tsx) */
     .brand-gradient {
@@ -977,6 +1005,7 @@
   <div id="site-footer"></div>
 
   <!-- ── Scripts ──────────────────────────────────────────── -->
+  <script src="https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@3.1.0/dist/cookieconsent.umd.js"></script>
   <script src="shared.js"></script>
   <script src="https://unpkg.com/lucide@latest"></script>
   <script>

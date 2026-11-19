@@ -427,3 +427,16 @@ Post in these subreddits (be a contributor, not an advertiser):
 - [ ] Replace developer contact email with `contact@tetraform.app`
 - [ ] Get 5+ reviews
 - [ ] Launch on Product Hunt
+
+## Analytics and cookie consent (added 19 Nov 2026, roadmap #32)
+
+| Piece | Where | Notes |
+|---|---|---|
+| Consent defaults | `<head>` of `index.html`, `privacy.html` | `gtag('consent','default', …denied)` before anything else |
+| Google Analytics (G-4QP72N746Q) | `<head>`, `type="text/plain" data-category="analytics"` | Loads only after "Accept analytics"; `!analytics` script sends a denied update on withdrawal |
+| Banner | CookieConsent v3.1.0 (MIT) from jsDelivr: CSS in `<head>`, UMD before `shared.js` | Config in `shared.js` → `initCookieConsent()`; equal-weight Accept / Reject buttons |
+| Theme | `#cc-main` CSS variables in each page's inline `<style>` | Uses DaisyUI `--color-primary` |
+| Re-open settings | Footer "Cookie settings" button (`data-cc="show-preferencesModal"`) in `shared.js` | |
+| New page checklist | Copy the GA/consent `<head>` block, the `#cc-main` style, and the CookieConsent script tag | |
+
+Next: roadmap #37 tests Cloudflare Web Analytics (cookieless) alongside GA.

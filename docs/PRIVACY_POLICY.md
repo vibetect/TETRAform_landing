@@ -12,7 +12,7 @@
 | Daily fill counter | `chrome.storage.local` | Never | `src/lib/storage.ts` |
 | Feedback (type, message, optional email, version, tier, user agent, platform, language) | Firestore `feedback_submissions` (create-only rules) + email via Cloudflare Worker | Only when the user presses Send | `src/components/ContactForm.tsx`, `src/lib/firebase.ts`, `src/background.ts`, `cloudflare/tetraform-feedback-worker.js` |
 | IP address | Cloudflare rate limiter (transient, not stored by us) | With feedback request | Worker |
-| Website visits | Google Analytics (tetraform.app only) | Website only | `index.html`, `privacy.html` |
+| Website visits | Google Analytics (tetraform.app only), loaded only after the visitor accepts analytics in the CookieConsent banner | Website only, after consent | `index.html`, `privacy.html`, `shared.js` (`initCookieConsent`) |
 
 Not used: accounts/sign-in (`AuthScreen.tsx` is not mounted), extension analytics, ads, remote code.
 **Any change to this table needs a policy update and a Web Store privacy-tab review** (`TETRAform_local/docs/CHROME_STORE_ANSWERS.md`).
@@ -80,7 +80,7 @@ No selling, renting or transfer, except the processors in section 3. No advertis
 - Access or delete feedback: follow the steps in section 3.
 
 ## 7. This website
-tetraform.app is hosted on GitHub Pages and uses Google Analytics to count visits. GA may set cookies and receives standard browser info such as IP address. Not used in the extension; never linked to profiles.
+tetraform.app is hosted on GitHub Pages. It uses Google Analytics to count visits **only if you accept analytics cookies** in the cookie banner; until then the script doesn't load and nothing is sent to Google. When allowed, GA sets cookies and receives standard browser info such as IP address. Change your choice any time with "Cookie settings" in the footer; rejecting removes the analytics cookies. Not used in the extension; never linked to profiles.
 
 ## 8. Security
 - Local data sits in Chrome's extension storage, separate from websites.
