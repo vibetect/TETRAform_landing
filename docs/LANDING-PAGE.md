@@ -445,7 +445,7 @@ Next: roadmap #37 tests Cloudflare Web Analytics (cookieless) alongside GA.
 
 | What | Where |
 |---|---|
-| Approved homepage, Web Store and directory copy | Claude Doc "TETRAform SEO copy drafts" (https://claude.ai/artifact/CfwhkpCuBQPNF8DpTKzcZQ) |
+| Approved homepage, Web Store and directory copy | `SEO/TETRAform Copy.md` (workspace), mirrored in the Claude Doc "TETRAform SEO copy drafts" |
 | Keyword evidence | `SEO/TETRAform SEO Audit.md` (workspace) |
 | Claims rules | Never "100% private", "any web form", "in seconds", "encrypted", "the only"; say "your profiles stay on your device" |
 

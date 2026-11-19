@@ -1,7 +1,7 @@
 # Privacy Policy for TETRAform
 
 **Last updated:** November 19, 2026
-**Source of truth.** The live page is `privacy.html` (https://tetraform.app/privacy). Keep this file, `privacy.html` and `TETRAform_local/docs/PRIVACY_POLICY.md` identical in substance.
+**Source of truth.** The live page is `privacy.html` (https://tetraform.app/privacy). Keep this file and `privacy.html` identical in substance. This is the only copy (the extension repo points here).
 
 ## Data flow map (for maintainers)
 
