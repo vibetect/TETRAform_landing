@@ -9,6 +9,7 @@
 |---|---|---|---|
 | Profiles, custom fields, groups | `chrome.storage.local` | Never | `src/lib/storage.ts` |
 | Settings, denied domains, domain profiles | `chrome.storage.local` | Never | `src/lib/storage.ts` |
+| Review batches (new field ids, page title, origin + path) | `chrome.storage.local` (`tetraform_review_batches`) | Never | `src/lib/review-batches.ts` |
 | Daily fill counter | `chrome.storage.local` | Never | `src/lib/storage.ts` |
 | Feedback (type, message, optional email, version, tier, user agent, platform, language) | Firestore `feedback_submissions` (create-only rules) + email via Cloudflare Worker | Only when the user presses Send | `src/components/ContactForm.tsx`, `src/lib/firebase.ts`, `src/background.ts`, `cloudflare/tetraform-feedback-worker.js` |
 | IP address | Cloudflare rate limiter (transient, not stored by us) | With feedback request | Worker |
@@ -31,6 +32,7 @@ TETRAform ("we", "our", "us") is a Chrome extension that fills web forms from pr
 Saved with `chrome.storage.local`, never sent to us or anyone else:
 - **Profiles**: name, email, phone, address, work history and any custom fields you create.
 - **Settings**: active profile, domain-specific profiles, sites where TETRAform is off, display preferences.
+- **Fields to review**: which saved fields are new, plus the page title and address (no query string) they came from; cleared on "Done reviewing".
 - **Daily fill counter**: a number used for the Free plan limit.
 
 JSON backups are saved where you choose. We never receive them.
